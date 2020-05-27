@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="u-f-col">
     <head-guide></head-guide>
     <router-view></router-view>
     <foot></foot>
@@ -17,3 +17,8 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+/* 公共样式 */
+@import './assets/common.css';
+</style>

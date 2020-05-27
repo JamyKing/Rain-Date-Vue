@@ -1,0 +1,28 @@
+/* 样式初始化 */
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+ul,li,ol{
+	list-style-type: none;
+}
+
+/* flex布局 */
+.u-f,.u-f-rc,.u-f-auto,.u-f-jsb,.u-f-col{
+	display: flex;
+}
+.u-f-rc,.u-f-auto{
+	justify-content: center;
+}
+.u-f-auto{
+	align-items: center;
+}
+.u-f-jsb{
+	justify-content: space-between;
+}
+.u-f-col{
+	flex-direction: column;
+}
