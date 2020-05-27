@@ -5,9 +5,10 @@
                 <el-col :span="2">
                     <div class="guide-item u-f-auto">BLOG</div>
                 </el-col>
-                <el-col class="u-f-jsb" :span="3" :pull="1">
+                <el-col class="u-f-jsb" :span="4" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
                     <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
+                    <div class="guide-item u-f-auto">Login</div>
                 </el-col>
             </el-row>
             <el-image class="bg-img" fit="cover" src="../../../static/imgs/bg.jpg"></el-image>
