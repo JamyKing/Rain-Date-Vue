@@ -15,7 +15,8 @@ export default {
     /*position: fixed;*/
     /*bottom: 0;*/
     width: 100%;
-    height: 300px;
+    height: 260px;
+    margin-top: 20px;
     background: #124971;
 }
 </style>

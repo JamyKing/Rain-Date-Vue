@@ -1,5 +1,5 @@
 <template>
-    <el-row :gutter="30" type="flex" justify="center">
+    <el-row :gutter="30" type="flex" justify="center" style="margin: 0">
         <el-col :span="8">
             <div class="data-list">
                 <div class="list-item">
@@ -102,46 +102,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .user{
-        .head{
-            width: 200px;
-            height: 200px;
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 10px auto;
+.user {
+    .head {
+        width: 200px;
+        height: 200px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 10px auto;
+    }
+}
+.data-list {
+    .list-item {
+        .title {
+            font-size: 26px;
+            line-height: 1.3;
+            margin: 30px 0 10px;
+        }
+        .sub-title {
+            font-size: 16px;
+            line-height: 1.3;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        .content {
+            font-size: 14px;
+            font-style: italic;
+            color: #a3a3a3;
+        }
+        .meta {
+            font-family: Lora,'Times New Roman',serif;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 30px;
         }
     }
-    .data-list{
-        .list-item{
-            .title{
-                font-size: 26px;
-                line-height: 1.3;
-                margin: 30px 0 10px;
-            }
-            .sub-title{
-                font-size: 16px;
-                line-height: 1.3;
-                font-weight: 300;
-                margin-bottom: 10px;
-            }
-            .content{
-                font-size: 14px;
-                font-style: italic;
-                color: #a3a3a3;
-            }
-            .meta{
-                font-family: Lora,'Times New Roman',serif;
-                font-size: 18px;
-                font-style: italic;
-                margin-bottom: 30px;
-            }
-        }
-        .hr{
-            height: 0;
-            margin: 20px 0;
-            border: 0;
-            border-top: 1px solid #eeeeee;
-        }
+    .hr {
+        height: 0;
+        margin: 20px 0;
+        border: 0;
+        border-top: 1px solid #eeeeee;
     }
+}
 </style>
