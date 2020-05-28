@@ -1,24 +1,18 @@
 <template>
-  <div class="u-f-col">
-    <head-guide></head-guide>
+  <keep-alive :include="['index', 'about', 'login']">
     <router-view></router-view>
-    <foot></foot>
-  </div>
+  </keep-alive>
 </template>
 
 <script>
-import headGuide from '@/components/common/head-guide'
-import foot from '@/components/common/foot'
 export default {
-  name: 'App',
-  components: {
-    headGuide,
-    foot
-  }
+  name: 'App'
 }
 </script>
 
 <style lang="scss">
 /* 公共样式 */
 @import './assets/common.css';
+/* 动画库 */
+@import './assets/animate.css';
 </style>

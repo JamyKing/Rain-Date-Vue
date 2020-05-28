@@ -1,92 +1,104 @@
 <template>
-    <el-row :gutter="30" type="flex" justify="center" style="margin: 0">
-        <el-col :span="8">
-            <div class="data-list">
-                <div class="list-item">
-                    <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                    <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                    <div class="content">
-                        这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                        @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                        @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                        「CSS是一门正儿八经的编程语言，请拿出你学C+...
+    <div class="u-f-col">
+        <head-guide></head-guide>
+        <el-row :gutter="30" type="flex" justify="center" style="margin: 0">
+            <el-col :span="8">
+                <div class="data-list">
+                    <div class="list-item">
+                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
+                        <div class="content">
+                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
+                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
+                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
+                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                        </div>
+                        <p class="meta">
+                            Posted by Hux on October 6, 2017
+                        </p>
                     </div>
-                    <p class="meta">
-                        Posted by Hux on October 6, 2017
-                    </p>
-                </div>
-                <div class="hr"></div>
+                    <div class="hr"></div>
 
-                <div class="list-item">
-                    <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                    <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                    <div class="content">
-                        这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                        @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                        @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                        「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                    <div class="list-item">
+                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
+                        <div class="content">
+                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
+                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
+                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
+                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                        </div>
+                        <p class="meta">
+                            Posted by Hux on October 6, 2017
+                        </p>
                     </div>
-                    <p class="meta">
-                        Posted by Hux on October 6, 2017
-                    </p>
-                </div>
-                <div class="hr"></div>
+                    <div class="hr"></div>
 
-                <div class="list-item">
-                    <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                    <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                    <div class="content">
-                        这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                        @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                        @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                        「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                    <div class="list-item">
+                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
+                        <div class="content">
+                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
+                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
+                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
+                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                        </div>
+                        <p class="meta">
+                            Posted by Hux on October 6, 2017
+                        </p>
                     </div>
-                    <p class="meta">
-                        Posted by Hux on October 6, 2017
-                    </p>
-                </div>
-                <div class="hr"></div>
+                    <div class="hr"></div>
 
-                <div class="list-item">
-                    <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                    <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                    <div class="content">
-                        这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                        @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                        @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                        「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                    <div class="list-item">
+                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
+                        <div class="content">
+                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
+                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
+                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
+                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                        </div>
+                        <p class="meta">
+                            Posted by Hux on October 6, 2017
+                        </p>
                     </div>
-                    <p class="meta">
-                        Posted by Hux on October 6, 2017
-                    </p>
-                </div>
-                <div class="hr"></div>
+                    <div class="hr"></div>
 
-                <div class="list-item">
-                    <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                    <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                    <div class="content">
-                        这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                        @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                        @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                        「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                    <div class="list-item">
+                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
+                        <div class="content">
+                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
+                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
+                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
+                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
+                        </div>
+                        <p class="meta">
+                            Posted by Hux on October 6, 2017
+                        </p>
                     </div>
-                    <p class="meta">
-                        Posted by Hux on October 6, 2017
-                    </p>
+                    <div class="hr"></div>
                 </div>
-                <div class="hr"></div>
-            </div>
-        </el-col>
-        <el-col class="user u-f-rc" :span="4">
-            <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
-        </el-col>
-    </el-row>
+            </el-col>
+            <el-col class="user u-f-rc" :span="4">
+                <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
+            </el-col>
+        </el-row>
+        <foot></foot>
+    </div>
+
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import headGuide from '@/components/common/head-guide'
+import foot from '@/components/common/foot'
 export default {
     name: 'index',
+    components: {
+        headGuide,
+        foot
+    },
     data() {
         return {
         }
@@ -94,9 +106,14 @@ export default {
     created() {
     },
     activated() {
+        console.log(this.hasLogin)
+    },
+    computed: {
+        ...mapState(['hasLogin'])
+    },
+    watch: {
     },
     methods: {
-
     }
 }
 </script>

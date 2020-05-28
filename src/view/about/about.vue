@@ -1,14 +1,24 @@
 <template>
-    <el-row type="flex" justify="center">
-        <el-col :span="12">
-            <el-image class="bg-img" src="../../../static/imgs/developing.jpg"></el-image>
-        </el-col>
-    </el-row>
+    <div class="u-f-col">
+        <head-guide></head-guide>
+        <el-row type="flex" justify="center">
+            <el-col :span="12">
+                <el-image class="bg-img" src="../../../static/imgs/suolong.png"></el-image>
+            </el-col>
+        </el-row>
+        <foot></foot>
+    </div>
 </template>
 
 <script>
+import headGuide from '@/components/common/head-guide'
+import foot from '@/components/common/foot'
 export default {
-    name: 'about'
+    name: 'about',
+    components: {
+        headGuide,
+        foot
+    },
 }
 </script>
 
