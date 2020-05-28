@@ -19,12 +19,9 @@ const store = new Vuex.Store({
 		}
 	},
 	getters: {
-		// getUserInfo(state) {
-		// 	return state.userInfo
-		// },
-		// getVersion(state) {
-		// 	return state.staticVersion
-		// }
+		getHasLogin(state) {
+			return state.hasLogin
+		}
 	}
 })
 

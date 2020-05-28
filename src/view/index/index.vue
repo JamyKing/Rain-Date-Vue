@@ -90,7 +90,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
 export default {
@@ -104,16 +103,27 @@ export default {
         }
     },
     created() {
+        // this.loadData()
     },
     activated() {
-        console.log(this.hasLogin)
     },
     computed: {
-        ...mapState(['hasLogin'])
     },
     watch: {
     },
     methods: {
+        async loadData () {
+            try {
+                const { code, data } = await this.$request('/api/blog/list', 'GET')
+                if (code === 0) {
+                    console.log(data)
+                }
+            } catch (err) {
+                console.error(err)
+            } finally {
+                console.log('finally')
+            }
+        }
     }
 }
 </script>

@@ -3,7 +3,7 @@
         <el-col class="head" :style="[{height: guideHeight}]" :span="24">
             <el-row class="guide" type="flex" justify="space-between">
                 <el-col :span="2">
-                    <div class="guide-item u-f-auto">BLOG</div>
+                    <div @click="test" class="guide-item u-f-auto">BLOG</div>
                 </el-col>
                 <el-col class="u-f-jsb" :span="4" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
@@ -43,6 +43,18 @@ export default {
     methods: {
         navTo (url) {
             this.$router.push({ name: url })
+        },
+        async test () {
+            try {
+                const { code, data } = await this.$request('/api/blog/list', 'GET')
+                if (code === 0) {
+                    console.log(data)
+                }
+            } catch (err) {
+                console.error(err)
+            } finally {
+                console.log('finally')
+            }
         }
     }
 }

@@ -9,12 +9,12 @@
                     </el-col>
                     <el-col :span="20">
                         <el-form-item label="用户名" prop="username">
-                            <el-input v-model="loginForm.username"></el-input>
+                            <el-input v-model="loginForm.username" clearable placeholder="请输入登录用户名"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="20">
                         <el-form-item label="密码" prop="password">
-                            <el-input v-model="loginForm.password"></el-input>
+                            <el-input v-model="loginForm.password" show-password clearable placeholder="请输入登录密码"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="24" class="u-f-auto">
@@ -52,16 +52,41 @@ export default {
     created() {
     },
     activated() {
+        this.loginForm = {
+            username: '',
+            password: ''
+        }
     },
     computed: {},
     watch: {},
     methods: {
         toLogin () {
-            this.$refs['loginForm'].validate((valid) => {
+            this.$refs['loginForm'].validate(async (valid) => {
                 if (valid) {
-                    alert('submit!')
+                    const {loginForm} = this
+                    try {
+                        const { code, data } = await this.$request('/api/user/login', 'POST', { ...loginForm })
+                        if (code === 0) {
+                            this.$message({
+                                message: '登录成功！',
+                                type: 'success',
+                                duration: '2000',
+                                onClose: () => {
+                                    this.$router.push({ name: 'index' })
+                                }
+                            })
+                            this.$store.commit('login', data.username)
+                        } else {
+                            this.$message.error('登录出错了！')
+                        }
+                    } catch (err) {
+                        this.$message.error(err)
+                    }
                 } else {
-                    console.log('error submit!!')
+                    this.$message({
+                        message: '请正确输入信息！',
+                        type: 'warning'
+                    })
                     return false
                 }
             })
