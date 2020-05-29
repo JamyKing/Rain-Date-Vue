@@ -67,15 +67,15 @@ export default {
                     try {
                         const { code, data } = await this.$request('/api/user/login', 'POST', { ...loginForm })
                         if (code === 0) {
+                            this.$store.commit('login', data.username)
                             this.$message({
                                 message: '登录成功！',
                                 type: 'success',
                                 duration: '2000',
                                 onClose: () => {
-                                    this.$router.push({ name: 'index' })
+                                    this.$router.push({ name: 'admin' })
                                 }
                             })
-                            this.$store.commit('login', data.username)
                         } else {
                             this.$message.error('登录出错了！')
                         }

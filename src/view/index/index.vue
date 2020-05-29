@@ -4,80 +4,16 @@
         <el-row :gutter="30" type="flex" justify="center" style="margin: 0">
             <el-col :span="8">
                 <div class="data-list">
-                    <div class="list-item">
-                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
+                    <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item">
+                        <h2 class="title">{{item.title}}</h2>
                         <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">
-                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
-                        </div>
+                        <div class="content">{{item.subtitle}}</div>
                         <p class="meta">
                             Posted by Hux on October 6, 2017
                         </p>
+                        <div class="hr"></div>
                     </div>
-                    <div class="hr"></div>
 
-                    <div class="list-item">
-                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">
-                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
-                        </div>
-                        <p class="meta">
-                            Posted by Hux on October 6, 2017
-                        </p>
-                    </div>
-                    <div class="hr"></div>
-
-                    <div class="list-item">
-                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">
-                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
-                        </div>
-                        <p class="meta">
-                            Posted by Hux on October 6, 2017
-                        </p>
-                    </div>
-                    <div class="hr"></div>
-
-                    <div class="list-item">
-                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">
-                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
-                        </div>
-                        <p class="meta">
-                            Posted by Hux on October 6, 2017
-                        </p>
-                    </div>
-                    <div class="hr"></div>
-
-                    <div class="list-item">
-                        <h2 class="title">「知乎」为什么 CSS 这么难学？</h2>
-                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">
-                            这篇文章转载自我在知乎上的回答 对我来说，CSS 难学以及烦人是因为它「出乎我意料之外的复杂」且让我觉得「定位矛盾」。
-                            @方应杭 老师的答案我赞了：CSS 的属性互不正交，大量的依赖与耦合难以记忆。
-                            @顾轶灵 @王成 说得也没错：CSS 的很多规则是贯彻整个体系的，而且都记在规范里了，是有规律的，你应该好好读文档而不是去瞎试。
-                            「CSS是一门正儿八经的编程语言，请拿出你学C+...
-                        </div>
-                        <p class="meta">
-                            Posted by Hux on October 6, 2017
-                        </p>
-                    </div>
-                    <div class="hr"></div>
                 </div>
             </el-col>
             <el-col class="user u-f-rc" :span="4">
@@ -86,11 +22,10 @@
         </el-row>
         <foot></foot>
     </div>
-
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
 export default {
@@ -101,31 +36,33 @@ export default {
     },
     data() {
         return {
+            dataList: []
         }
     },
     created() {
-        // this.loadData()
+        this.getDataList()
     },
     activated() {
-        console.log(this.hasLogin)
+        // console.log(this.hasLogin)
     },
     computed: {
-        ...mapState(['hasLogin'])
+        // ...mapState(['hasLogin'])
     },
     watch: {
     },
     methods: {
-        async loadData () {
+        async getDataList () {
             try {
-                const { code, data } = await this.$request('/api/blog/list', 'GET')
+                const { code, data } = await this.$request('/api/blog/indexList', 'GET')
                 if (code === 0) {
-                    console.log(data)
+                    this.dataList = data
                 }
             } catch (err) {
                 console.error(err)
-            } finally {
-                console.log('finally')
             }
+        },
+        getDetail (id) {
+            this.$router.push({ name: 'detail', query: {id: id} })
         }
     }
 }
@@ -143,7 +80,11 @@ export default {
     }
 }
 .data-list {
+    min-height: 600px;
     .list-item {
+        &:hover {
+            cursor: pointer;
+        }
         .title {
             font-size: 26px;
             line-height: 1.3;
@@ -166,12 +107,12 @@ export default {
             font-style: italic;
             margin-bottom: 30px;
         }
-    }
-    .hr {
-        height: 0;
-        margin: 20px 0;
-        border: 0;
-        border-top: 1px solid #eeeeee;
+        .hr {
+            height: 0;
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #eeeeee;
+        }
     }
 }
 </style>

@@ -1,9 +1,9 @@
 /* 样式初始化 */
-*{
+* {
 	margin: 0;
 	padding: 0;
 }
-a{
+a {
 	text-decoration: none;
 }
 ul,li,ol{

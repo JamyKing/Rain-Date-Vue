@@ -39,7 +39,7 @@ const request = (url, method, data = {}) => {
         http({
             url: baseUrl + url,
             method: method,
-            data: data
+            [method === 'GET' ? 'params' : 'data']: data
         }).then(res => {
             resolve(res.data)
         }).catch(err => {

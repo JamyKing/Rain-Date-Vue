@@ -8,13 +8,14 @@
                 <el-col class="u-f-jsb" :span="4" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
                     <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
+                    <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">Admin</div>
                     <div v-if="hasLogin" class="guide-item u-f-auto">
                         <el-avatar src="../../../static/imgs/head.jpg"></el-avatar>
                     </div>
-                    <div v-else @click="navTo('login')" class="guide-item u-f-auto">Login</div>
+                    <div v-if="!hasLogin" @click="navTo('login')" class="guide-item u-f-auto">Login</div>
                 </el-col>
             </el-row>
-            <el-image class="bg-img" fit="cover" :src="bgImg"></el-image>
+            <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
         </el-col>
     </el-row>
 </template>
@@ -31,6 +32,10 @@ export default {
         guideHeight: {
             type: String,
             default: '500px'
+        },
+        imgShow: {
+            type: Boolean,
+            default: true
         }
     },
     data() {
