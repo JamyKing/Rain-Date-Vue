@@ -55,6 +55,7 @@ export default {
     },
     data() {
         return {
+            id: null,
             dataForm: {
                 title: '',
                 state: 1,
@@ -83,12 +84,26 @@ export default {
         }
     },
     created() {
+        this.id = this.$route.query.id
+        if (this.id) {
+            this.editDetail(this.id)
+        }
     },
     activated() {
     },
     computed: {},
     watch: {},
     methods: {
+        async editDetail (id) {
+            try {
+                const { code, data } = await this.$request('/api/blog/edit', 'GET', { id })
+                if (code === 0) {
+                    this.dataForm = { ...data }
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        },
         // 所有操作都会被解析重新渲染
         change (value, render) {
             // render 为 markdown 解析后的结果[html]
@@ -121,14 +136,14 @@ export default {
         submit () {
             this.$refs['dataForm'].validate(async (valid) => {
                 if (valid) {
-                    const { dataForm } = this
+                    const { id, dataForm } = this
                     try {
-                        const { code } = await this.$request('/api/blog/new', 'POST', { ...dataForm })
+                        const { code } = await this.$request(`/api/blog/${id ? 'update' : 'new'}`, 'POST', { id, ...dataForm })
                         if (code === 0) {
                             this.$message({
-                                message: '创建成功！',
+                                message: `${id ? '更新' : '创建'}成功！`,
                                 type: 'success',
-                                duration: '2000',
+                                duration: '1500',
                                 onClose: () => {
                                     this.$router.push({ name: 'admin' })
                                 }
