@@ -59,7 +59,7 @@ export default {
                 title: '',
                 state: 1,
                 subtitle: '',
-                content:'',
+                content: '',
                 htmlRender:'',
             },
             statusOptions: [{
@@ -119,7 +119,6 @@ export default {
         },
         // 提交
         submit () {
-            console.log(this.dataForm)
             this.$refs['dataForm'].validate(async (valid) => {
                 if (valid) {
                     const { dataForm } = this
