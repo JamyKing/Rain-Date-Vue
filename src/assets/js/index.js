@@ -1,3 +1,25 @@
+import axios from 'axios'
+import { def } from '../../conf'
+
+// 上传图片
+export function upload (file) {
+    const baseUrl = def().baseUrl
+    const formData = new FormData()
+    formData.append('image', file)
+    return new Promise((resolve, reject) => {
+        axios({
+            url: baseUrl + '/api/common/upload',
+            method: 'POST',
+            data: formData,
+            headers: { 'Content-Type': 'multipart/form-data' },
+        }).then((res) => {
+            resolve(res.data)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
+
 // 时间过滤
 export function timeFilter (time = +new Date()) {
     const date = new Date(time + 8 * 3600 * 1000) // 增加8小时
