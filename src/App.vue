@@ -23,7 +23,7 @@
 
 <style lang="scss">
     /* 公共样式 */
-    @import './assets/common.css';
+    @import './assets/css/common.css';
     /* 动画库 */
-    @import './assets/animate.css';
+    @import './assets/css/animate.css';
 </style>

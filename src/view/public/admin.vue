@@ -50,6 +50,7 @@
                     style="width: 100%;">
                     <span slot="empty">-暂无数据-</span>
                     <el-table-column prop="title" label="标题" align="center"></el-table-column>
+                    <el-table-column prop="subtitle" label="简介" align="center"></el-table-column>
                     <el-table-column prop="status" label="状态" align="center">
                         <template slot-scope="scope">
                             <el-tag v-if="scope.row.state" type="success">正常</el-tag>
@@ -59,21 +60,21 @@
                     <el-table-column prop="createTime" label="时间" align="center"></el-table-column>
                     <el-table-column label="操作" align="center" width="300" fixed="right">
                         <template slot-scope="scope">
-                            <el-button type="text" size="small">编辑</el-button>
-                            <el-button type="text" size="small">{{ scope.row.state ? '停用' : '启用' }}</el-button>
+                            <el-button @click="toEdit(scope.row.id)" type="text" size="small">编辑</el-button>
+                            <el-button @click="disFun(scope.row.id, scope.row.state)" type="text" size="small">{{ scope.row.state ? '停用' : '启用' }}</el-button>
                             <el-button @click="delFun(scope.row.id)" type="text" size="small">删除</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
             </el-col>
-            <el-col :span="24" style="margin-top: 20px;">
+            <el-col :span="24" style="margin: 20px;">
                 <el-pagination
                     @size-change="sizeChangeHandle"
                     @current-change="currentChangeHandle"
-                    :current-page="pageIndex"
+                    :current-page="pageNo"
                     :page-sizes="[10, 30, 50, 100, 200]"
                     :page-size="pageSize"
-                    :total="totalPage"
+                    :total="totalCount"
                     layout="total, sizes, prev, pager, next, jumper">
                 </el-pagination>
             </el-col>
@@ -92,7 +93,7 @@ export default {
         return {
             filterForm: {
                 title: '',
-                state: 1,
+                state: null,
                 createTime: ''
             },
             statusOptions: [{
@@ -103,9 +104,9 @@ export default {
                 label: '停用'
             }],
             dataList: [],
-            pageIndex: 1,
+            pageNo: 1,
             pageSize: 10,
-            totalPage: 0,
+            totalCount: 0,
             dataListLoading: false
         }
     },
@@ -119,11 +120,12 @@ export default {
     methods: {
         async getDataList () {
             this.dataListLoading = true
-            const { filterForm } = this
+            const { filterForm, pageNo, pageSize } = this
             try {
-                const { code, data } = await this.$request('/api/blog/adminList', 'POST', { ...filterForm })
+                const { code, data: { totalCount, listData } } = await this.$request('/api/blog/adminList', 'POST', { pageNo, pageSize, ...filterForm })
                 if (code === 0) {
-                    this.dataList = data
+                    this.dataList = listData
+                    this.totalCount = totalCount
                 }
             } catch (err) {
                 console.error(err)
@@ -133,9 +135,37 @@ export default {
         },
         reset () {
             this.$refs['filterForm'].resetFields()
-            this.filterForm = {}
             this.$nextTick(() => {
                 this.getDataList()
+            })
+        },
+        disFun (id, state) {
+            this.$confirm(`确认【${state ? '停用' : '启用'}】此文章吗?`, '提示', {
+                confirmButtonText: '确认',
+                cancelButtonText: '取消',
+                type: 'warning',
+                showClose: false
+            }).then(async () => {
+                try {
+                    const { code } = await this.$request('/api/blog/disable', 'GET', { id: id, state: state ? 0 : 1 })
+                    if (code === 0) {
+                        this.$message({
+                            message: '操作成功！',
+                            type: 'success',
+                            duration: 1500,
+                            onClose: () => {
+                                this.getDataList()
+                            }
+                        })
+                    }
+                } catch (err) {
+                    this.$message.error(err)
+                }
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消'
+                })
             })
         },
         delFun (id) {
@@ -170,15 +200,18 @@ export default {
         create () {
             this.$router.push({ name: 'creation' })
         },
+        toEdit (id) {
+            this.$router.push({ name: 'creation', query: { id: id } })
+        },
         // 每页数
         sizeChangeHandle (val) {
             this.pageSize = val
-            this.pageIndex = 1
+            this.pageNo = 1
             this.getDataList()
         },
         // 当前页
         currentChangeHandle (val) {
-            this.pageIndex = val
+            this.pageNo = val
             this.getDataList()
         }
     }
@@ -188,5 +221,6 @@ export default {
 <style lang="scss" scoped>
 .data-list {
     padding: 0 30px;
+    margin: 0!important;
 }
 </style>

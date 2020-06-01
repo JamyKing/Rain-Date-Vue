@@ -5,7 +5,7 @@
                 <el-col :span="2">
                     <div @click="test" class="guide-item u-f-auto">BLOG</div>
                 </el-col>
-                <el-col class="u-f-jsb" :span="4" :pull="1">
+                <el-col class="u-f-jsb" :span="6" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
                     <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
                     <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">Admin</div>

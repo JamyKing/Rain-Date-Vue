@@ -1,7 +1,8 @@
 const dev = {
-    // 开发
-    // 接口访问地址
-    baseUrl: 'http://localhost:8088'
+	// 开发
+	baseUrl: 'http://localhost:8080'
+    // 线上
+	// baseUrl: 'http://jianking.vip:8080'
 }
 
 export function def() {

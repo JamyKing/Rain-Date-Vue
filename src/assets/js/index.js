@@ -1,32 +1,27 @@
-// 时间戳转时分秒
-function getformatDate (date, fmt) {
-    if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
-    }
-    let o = {
-        'M+': date.getMonth() + 1,
-        'd+': date.getDate(),
-        'h+': date.getHours(),
-        'm+': date.getMinutes(),
-        's+': date.getSeconds()
-    }
-    for (let k in o) {
-        if (new RegExp(`(${k})`).test(fmt)) {
-            let str = o[k] + ''
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str))
-        }
-    }
-    return fmt
-};
+import axios from 'axios'
+import { def } from '../../conf'
 
-function padLeftZero (str) {
-    return ('00' + str).substr(str.length)
-};
+// 上传图片
+export function upload (file) {
+    const baseUrl = def().baseUrl
+    const formData = new FormData()
+    formData.append('image', file)
+    return new Promise((resolve, reject) => {
+        axios({
+            url: baseUrl + '/api/common/upload',
+            method: 'POST',
+            data: formData,
+            headers: { 'Content-Type': 'multipart/form-data' },
+        }).then((res) => {
+            resolve(res.data)
+        }).catch(err => {
+            reject(err)
+        })
+    })
+}
 
 // 时间过滤
-export function dateFormat(time) {
-    if (!time) {
-        time = Date.now()
-    }
-    return getformatDate(new Date(time), 'yyyy-MM-dd')
+export function timeFilter (time = +new Date()) {
+    const date = new Date(time + 8 * 3600 * 1000) // 增加8小时
+    return date.toJSON().substr(0, 19).replace('T', ' ')
 }

@@ -1,23 +1,25 @@
 <template>
     <div class="u-f-col">
         <head-guide></head-guide>
-        <el-row :gutter="30" type="flex" justify="center" style="margin: 0">
+        <el-row :gutter="30" type="flex" justify="center" style="margin: 0;">
             <el-col :span="8">
                 <div class="data-list">
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item">
                         <h2 class="title">{{item.title}}</h2>
-                        <h3 class="sub-title">Why I dislike CSS as a programming language</h3>
-                        <div class="content">{{item.subtitle}}</div>
-                        <p class="meta">
-                            Posted by Hux on October 6, 2017
-                        </p>
+                        <h3 class="sub-title">{{item.subtitle}}</h3>
+                        <p class="meta">{{item.createTime}}</p>
                         <div class="hr"></div>
                     </div>
-
                 </div>
             </el-col>
             <el-col class="user u-f-rc" :span="4">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="8" :offset="6" class="u-f-jsb">
+                <el-button @click="prePage" :disabled="pageNo === 1" type="primary" icon="el-icon-arrow-left">上一页</el-button>
+                <el-button @click="nextPage" :disabled="pageNo === totalPage" type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
             </el-col>
         </el-row>
         <foot></foot>
@@ -36,7 +38,9 @@ export default {
     },
     data() {
         return {
-            dataList: []
+            dataList: [],
+            pageNo: 1,
+            totalPage: 1
         }
     },
     created() {
@@ -52,10 +56,12 @@ export default {
     },
     methods: {
         async getDataList () {
+            const { pageNo } = this
             try {
-                const { code, data } = await this.$request('/api/blog/indexList', 'GET')
+                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo })
                 if (code === 0) {
-                    this.dataList = data
+                    this.totalPage = totalPage
+                    this.dataList = listData
                 }
             } catch (err) {
                 console.error(err)
@@ -63,6 +69,14 @@ export default {
         },
         getDetail (id) {
             this.$router.push({ name: 'detail', query: {id: id} })
+        },
+        prePage () {
+            this.pageNo -= 1
+            this.getDataList()
+        },
+        nextPage () {
+            this.pageNo += 1
+            this.getDataList()
         }
     }
 }
@@ -91,15 +105,12 @@ export default {
             margin: 30px 0 10px;
         }
         .sub-title {
-            font-size: 16px;
+            font-size: 17px;
             line-height: 1.3;
             font-weight: 300;
             margin-bottom: 10px;
-        }
-        .content {
-            font-size: 14px;
-            font-style: italic;
-            color: #a3a3a3;
+            max-height: 100px;
+            overflow: hidden;
         }
         .meta {
             font-family: Lora,'Times New Roman',serif;
