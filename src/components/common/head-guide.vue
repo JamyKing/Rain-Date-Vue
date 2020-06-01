@@ -3,7 +3,7 @@
         <el-col class="head" :style="[{height: guideHeight}]" :span="24">
             <el-row class="guide" type="flex" justify="space-between">
                 <el-col :span="2">
-                    <div class="guide-item u-f-auto">BLOG</div>
+                    <div class="guide-item u-f-auto">RainDate</div>
                 </el-col>
                 <el-col class="u-f-jsb" :span="5" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>

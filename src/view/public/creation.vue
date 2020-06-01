@@ -3,12 +3,12 @@
         <head-guide guideHeight="60px" :imgShow="false" :sayingShow="false"></head-guide>
         <el-form :model="dataForm" ref="dataForm" :rules="rules" label-width="60px" size="medium" style="padding: 0 30px;">
             <el-row :gutter="20">
-                <el-col :span="5">
+                <el-col :span="4">
                     <el-form-item label="标题" prop="title">
                         <el-input v-model="dataForm.title" placeholder="文章标题" clearable></el-input>
                     </el-form-item>
                 </el-col>
-                <el-col :span="5">
+                <el-col :span="4">
                     <el-form-item label="状态" prop="state">
                         <el-select v-model="dataForm.state" placeholder="文章状态">
                             <el-option
@@ -20,7 +20,19 @@
                         </el-select>
                     </el-form-item>
                 </el-col>
-                <el-col :span="8">
+                <el-col :span="4">
+                    <el-form-item label="标签" prop="category">
+                        <el-select v-model="dataForm.category" @change="test" multiple filterable placeholder="请选择">
+                            <el-option
+                                v-for="item in category"
+                                :key="item.id"
+                                :label="item.name"
+                                :value="item.id">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="6">
                     <el-form-item label="说明" prop="subtitle">
                         <el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="dataForm.subtitle"></el-input>
                     </el-form-item>
@@ -44,6 +56,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import { mavonEditor } from 'mavon-editor'
 import { upload } from '@/assets/js'
@@ -60,6 +73,7 @@ export default {
             dataForm: {
                 title: '',
                 state: 1,
+                category: [],
                 subtitle: '',
                 content: '',
                 htmlRender:'',
@@ -90,11 +104,14 @@ export default {
             this.editDetail(this.id)
         }
     },
-    activated() {
+    computed: {
+        ...mapState(['category'])
     },
-    computed: {},
-    watch: {},
     methods: {
+        test (val) {
+            console.log('select携带值 => ', val)
+            console.log('dataForm => ', this.dataForm)
+        },
         async editDetail (id) {
             try {
                 const { code, data } = await this.$request('/api/blog/edit', 'GET', { id })
