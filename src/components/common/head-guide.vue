@@ -17,7 +17,7 @@
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
             <div v-if="sayingShow" class="saying u-f-auto">
-                <h1>{{feature}}</h1>
+                <h1 v-html="feature"></h1>
             </div>
         </el-col>
     </el-row>
