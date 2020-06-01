@@ -1,6 +1,6 @@
 <template>
     <div class="u-f-col">
-        <head-guide guideHeight="60px" :imgShow="false"></head-guide>
+        <head-guide guideHeight="60px" :imgShow="false" :sayingShow="false"></head-guide>
         <el-row :gutter="20" class="data-list">
             <el-form :model="filterForm" ref="filterForm" label-width="70px" size="medium" @keyup.enter.native="getDataList()">
                 <el-row :gutter="20">

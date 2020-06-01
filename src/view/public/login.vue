@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <head-guide guideHeight="100%"></head-guide>
+        <head-guide guideHeight="100%" :sayingShow="false"></head-guide>
         <div class="login-form animated fadeInDownBig">
             <el-form :model="loginForm" :rules="rules" ref="loginForm" size="medium" label-width="90px">
                 <el-row>

@@ -16,7 +16,7 @@
                 </el-col>
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
-            <div class="saying u-f-auto">
+            <div v-if="sayingShow" class="saying u-f-auto">
                 <h1>高山仰止，景行行止。</h1>
             </div>
         </el-col>
@@ -37,6 +37,10 @@ export default {
             default: '500px'
         },
         imgShow: {
+            type: Boolean,
+            default: true
+        },
+        sayingShow: {
             type: Boolean,
             default: true
         }
@@ -100,9 +104,11 @@ export default {
         position: absolute;
         top: 40%;
         h1 {
+            font-size: 36px;
             max-width: 500px;
             color: white;
             text-align: center;
+            font-family: cursive;
         }
     }
 }

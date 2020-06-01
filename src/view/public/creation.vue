@@ -1,6 +1,6 @@
 <template>
     <div class="u-f-col">
-        <head-guide guideHeight="60px" :imgShow="false"></head-guide>
+        <head-guide guideHeight="60px" :imgShow="false" :sayingShow="false"></head-guide>
         <el-form :model="dataForm" ref="dataForm" :rules="rules" label-width="60px" size="medium" style="padding: 0 30px;">
             <el-row :gutter="20">
                 <el-col :span="5">
