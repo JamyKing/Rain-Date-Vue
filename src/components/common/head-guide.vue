@@ -16,7 +16,7 @@
                 </el-col>
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
-            <div v-if="sayingShow" class="saying u-f-auto">
+            <div v-if="sayingShow" class="saying u-f-auto animated flipInX">
                 <h1 v-html="feature"></h1>
             </div>
         </el-col>

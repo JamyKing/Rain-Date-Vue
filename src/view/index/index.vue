@@ -4,7 +4,7 @@
         <el-row :gutter="30" type="flex" justify="center" style="margin: 0;">
             <el-col :span="8">
                 <div class="data-list">
-                    <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item">
+                    <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
                         <h3 class="sub-title">{{item.subtitle}}</h3>
                         <p class="meta">{{item.createTime}}</p>
@@ -12,8 +12,11 @@
                     </div>
                 </div>
             </el-col>
-            <el-col class="user u-f-rc" :span="4">
+            <el-col class="user u-f-col" :span="4">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
+                <div>
+                    <el-tag v-for="tag in category" :key="tag.id" type="warning" effect="plain" class="tags animated fadeInDown">{{tag.name}}</el-tag>
+                </div>
             </el-col>
         </el-row>
         <el-row>
@@ -27,6 +30,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
 export default {
@@ -48,6 +52,7 @@ export default {
     activated() {
     },
     computed: {
+        ...mapState(['category'])
     },
     watch: {
     },
@@ -88,6 +93,13 @@ export default {
         border: 1px solid #ddd;
         border-radius: 5px;
         margin: 10px auto;
+    }
+    .tags {
+        margin: 5px;
+        &:hover {
+            cursor: pointer;
+            color: orangered;
+        }
     }
 }
 .data-list {

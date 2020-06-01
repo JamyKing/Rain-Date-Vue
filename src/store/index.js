@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		hasLogin: false,
-		userName: ''
+		userName: '',
+		category: []
 	},
 	mutations: {
 		login(state, provider) {
@@ -16,6 +17,9 @@ const store = new Vuex.Store({
 		logout(state) {
 			state.hasLogin = false
 			state.userName = ''
+		},
+		setCategory(state, provider) {
+			state.category = provider
 		}
 	},
 	getters: {
