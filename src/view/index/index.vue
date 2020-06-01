@@ -7,7 +7,7 @@
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
                         <h3 class="sub-title">{{item.subtitle}}</h3>
-                        <p class="meta">{{2 | categoryFilter}}</p>
+                        <p class="meta">{{item.createTime}}</p>
                         <div class="hr"></div>
                     </div>
                 </div>
@@ -53,14 +53,12 @@ export default {
         ...mapState(['category'])
     },
     filters: {
-        categoryFilter (code) {
-            // const listData = this.$store.getters.getCategory
-            // for (let item of listData) {
-            //     console.log(item.name)
-            //     if (item.id === code) {
-            //         return item.name
-            //     }
-            // }
+        categoryFilter (code, category) {
+            for (let item of category) {
+                if (item.id === code) {
+                    return item.name
+                }
+            }
         }
     },
     methods: {

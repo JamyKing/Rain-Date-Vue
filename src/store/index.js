@@ -25,9 +25,6 @@ const store = new Vuex.Store({
 	getters: {
 		getHasLogin(state) {
 			return state.hasLogin
-		},
-		getCategory(state) {
-			return state.category
 		}
 	}
 })
