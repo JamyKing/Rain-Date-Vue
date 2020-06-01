@@ -3,7 +3,7 @@
         <el-col class="head" :style="[{height: guideHeight}]" :span="24">
             <el-row class="guide" type="flex" justify="space-between">
                 <el-col :span="2">
-                    <div @click="test" class="guide-item u-f-auto">BLOG</div>
+                    <div class="guide-item u-f-auto">BLOG</div>
                 </el-col>
                 <el-col class="u-f-jsb" :span="5" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
@@ -17,7 +17,7 @@
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
             <div v-if="sayingShow" class="saying u-f-auto">
-                <h1>高山仰止，景行行止。</h1>
+                <h1>{{feature}}</h1>
             </div>
         </el-col>
     </el-row>
@@ -47,7 +47,12 @@ export default {
     },
     data() {
         return {
+            extract: '',
+            feature: ''
         }
+    },
+    created() {
+        this.getAim()
     },
     computed: {
         ...mapState(['hasLogin'])
@@ -56,16 +61,17 @@ export default {
         navTo (url) {
             this.$router.push({ name: url })
         },
-        async test () {
-            try {
-                const { code, data } = await this.$request('/api/blog/list', 'GET')
-                if (code === 0) {
-                    console.log(data)
+        async getAim () {
+            if (this.sayingShow) {
+                try {
+                    const { code, data } = await this.$request('/api/common/getAim', 'GET')
+                    if (code === 0) {
+                        this.extract = data.extract
+                        this.feature = data.feature
+                    }
+                } catch (err) {
+                    console.error(err)
                 }
-            } catch (err) {
-                console.error(err)
-            } finally {
-                console.log('finally')
             }
         }
     }
@@ -102,7 +108,7 @@ export default {
     .saying {
         width: 100%;
         position: absolute;
-        top: 40%;
+        bottom: 30%;
         h1 {
             font-size: 36px;
             max-width: 500px;

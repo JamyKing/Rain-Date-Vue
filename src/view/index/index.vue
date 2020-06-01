@@ -27,7 +27,6 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
 export default {
@@ -47,10 +46,8 @@ export default {
         this.getDataList()
     },
     activated() {
-        // console.log(this.hasLogin)
     },
     computed: {
-        // ...mapState(['hasLogin'])
     },
     watch: {
     },
