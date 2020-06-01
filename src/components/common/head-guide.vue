@@ -5,7 +5,7 @@
                 <el-col :span="2">
                     <div @click="test" class="guide-item u-f-auto">BLOG</div>
                 </el-col>
-                <el-col class="u-f-jsb" :span="6" :pull="1">
+                <el-col class="u-f-jsb" :span="5" :pull="1">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
                     <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
                     <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">Admin</div>
@@ -16,6 +16,9 @@
                 </el-col>
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" :src="bgImg"></el-image>
+            <div class="saying u-f-auto">
+                <h1>高山仰止，景行行止。</h1>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -67,6 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .head {
+    position: relative;
     /*height: 500px;*/
     margin-bottom: 20px;
     .guide {
@@ -90,6 +94,16 @@ export default {
         margin-top: -60px;
         width: 100%;
         height: 100%;
+    }
+    .saying {
+        width: 100%;
+        position: absolute;
+        top: 40%;
+        h1 {
+            max-width: 500px;
+            color: white;
+            text-align: center;
+        }
     }
 }
 </style>
