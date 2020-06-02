@@ -161,7 +161,6 @@ export default {
         handleClose () {
             if (this.isUpdate) {
                 this.$store.commit('setCategory', this.category)
-                console.log('success')
             }
             this.sync_value = false
         }

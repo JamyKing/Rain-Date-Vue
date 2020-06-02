@@ -6,6 +6,9 @@
                 <div class="data-list">
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
+                        <div v-if="item.category">
+                            <el-tag v-for="tag in item.category" :key="tag" type="success" style="margin: 0 3px;">{{tag | categoryFilter(category)}}</el-tag>
+                        </div>
                         <h3 class="sub-title">{{item.subtitle}}</h3>
                         <p class="meta">{{item.createTime}}</p>
                         <div class="hr"></div>
@@ -14,13 +17,13 @@
             </el-col>
             <el-col class="user u-f-col" :span="4">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
-                <div>
+                <div class="tag-group">
                     <el-tag v-for="tag in category" :key="tag.id" :type="tag.type" effect="plain" class="tags animated fadeInDown">{{tag.name}}</el-tag>
                 </div>
             </el-col>
         </el-row>
         <el-row>
-            <el-col :span="8" :offset="6" class="u-f-jsb">
+            <el-col v-show="dataList.length > 0" :span="8" :offset="6" class="u-f-jsb">
                 <el-button @click="prePage" :disabled="pageNo === 1" type="primary" icon="el-icon-arrow-left">上一页</el-button>
                 <el-button @click="nextPage" :disabled="pageNo === totalPage" type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
             </el-col>
@@ -99,11 +102,17 @@ export default {
         border-radius: 5px;
         margin: 10px auto;
     }
-    .tags {
-        margin: 5px;
+    .tag-group {
+        padding: 0 10px;
+        .tags {
+            margin: 5px;
+            &:hover {
+                cursor: pointer;
+                color: orangered;
+            }
+        }
         &:hover {
-            cursor: pointer;
-            color: orangered;
+            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
         }
     }
 }
@@ -122,7 +131,7 @@ export default {
             font-size: 17px;
             line-height: 1.3;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin: 10px 0;
             max-height: 100px;
             overflow: hidden;
         }

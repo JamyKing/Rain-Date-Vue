@@ -51,6 +51,11 @@
                     style="width: 100%;">
                     <span slot="empty">-暂无数据-</span>
                     <el-table-column prop="title" label="标题" align="center"></el-table-column>
+                    <el-table-column prop="category" label="标签" align="center">
+                        <template slot-scope="scope" v-if="scope.row.category">
+                            <el-tag v-for="tag in scope.row.category" :key="tag" style="margin: 0 3px;">{{tag | categoryFilter(category)}}</el-tag>
+                        </template>
+                    </el-table-column>
                     <el-table-column prop="subtitle" label="简介" align="center"></el-table-column>
                     <el-table-column prop="status" label="状态" align="center">
                         <template slot-scope="scope">
@@ -85,6 +90,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import tagHouse from './tagHouse'
 export default {
@@ -120,7 +126,18 @@ export default {
     },
     activated() {
     },
-    computed: {},
+    computed: {
+        ...mapState(['category'])
+    },
+    filters: {
+        categoryFilter (code, category) {
+            for (let item of category) {
+                if (item.id === code) {
+                    return item.name
+                }
+            }
+        }
+    },
     watch: {},
     methods: {
         async getDataList () {
