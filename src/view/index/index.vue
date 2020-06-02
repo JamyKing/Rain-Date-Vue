@@ -18,7 +18,15 @@
             <el-col class="user u-f-col" :span="4">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
                 <div class="tag-group">
-                    <el-tag v-for="tag in category" :key="tag.id" :type="tag.type" effect="plain" class="tags animated fadeInDown">{{tag.name}}</el-tag>
+                    <el-tag
+                        v-for="tag in category"
+                        :key="tag.id"
+                        :type="tag.type"
+                        :effect="tag.id === categoryId ? 'effect' : 'plain'"
+                        @click="tagSelected(tag.id)"
+                        class="tags animated fadeInDown">
+                        {{tag.name}}
+                    </el-tag>
                 </div>
             </el-col>
         </el-row>
@@ -45,6 +53,7 @@ export default {
     data() {
         return {
             dataList: [],
+            categoryId: null,
             pageNo: 1,
             totalPage: 1
         }
@@ -66,9 +75,9 @@ export default {
     },
     methods: {
         async getDataList () {
-            const { pageNo } = this
+            const { pageNo, categoryId } = this
             try {
-                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo })
+                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo, categoryId })
                 if (code === 0) {
                     this.totalPage = totalPage
                     this.dataList = listData
@@ -76,6 +85,10 @@ export default {
             } catch (err) {
                 console.error(err)
             }
+        },
+        tagSelected (id) {
+            this.categoryId = id
+            this.getDataList()
         },
         getDetail (id) {
             this.$router.push({ name: 'detail', query: {id: id} })
