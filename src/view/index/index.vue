@@ -22,7 +22,7 @@
                         v-for="tag in category"
                         :key="tag.id"
                         :type="tag.type"
-                        :effect="tag.id === categoryId ? 'effect' : 'plain'"
+                        :effect="tag.id === categoryId ? 'dark' : 'plain'"
                         @click="tagSelected(tag.id)"
                         class="tags animated fadeInDown">
                         {{tag.name}}
@@ -37,6 +37,7 @@
             </el-col>
         </el-row>
         <foot></foot>
+        <scroll-top :autoTop="false"></scroll-top>
     </div>
 </template>
 
@@ -44,11 +45,13 @@
 import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
+import scrollTop from '@/components/common/scrollTop'
 export default {
     name: 'index',
     components: {
         headGuide,
-        foot
+        foot,
+        scrollTop
     },
     data() {
         return {
@@ -123,9 +126,6 @@ export default {
                 cursor: pointer;
                 color: orangered;
             }
-        }
-        &:hover {
-            box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
         }
     }
 }

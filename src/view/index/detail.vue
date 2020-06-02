@@ -9,18 +9,22 @@
                 </el-card>
             </el-col>
         </el-row>
+<!--        <el-backtop class="up-top" target="" :bottom="100" :right="100"></el-backtop>-->
         <foot></foot>
+        <scroll-top></scroll-top>
     </div>
 </template>
 
 <script>
 import headGuide from '@/components/common/head-guide'
 import foot from '@/components/common/foot'
+import scrollTop from '@/components/common/scrollTop'
 export default {
     name: 'detail',
     components: {
         headGuide,
-        foot
+        foot,
+        scrollTop
     },
     data() {
         return {
@@ -50,5 +54,14 @@ export default {
 <style lang="scss" scoped>
 .title {
     margin-bottom: 30px;
+}
+.up-top {
+    height: 50px;
+    width: 50px;
+    background-color: #DCDFE6;
+    box-shadow: 0 0 6px rgba(0,0,0, .12);
+    text-align: center;
+    line-height: 40px;
+    color: #1989fa;
 }
 </style>
