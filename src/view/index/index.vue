@@ -15,7 +15,7 @@
             <el-col class="user u-f-col" :span="4">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
                 <div>
-                    <el-tag v-for="tag in category" :key="tag.id" type="warning" effect="plain" class="tags animated fadeInDown">{{tag.name}}</el-tag>
+                    <el-tag v-for="tag in category" :key="tag.id" :type="tag.type" effect="plain" class="tags animated fadeInDown">{{tag.name}}</el-tag>
                 </div>
             </el-col>
         </el-row>
