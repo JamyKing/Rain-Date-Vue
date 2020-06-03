@@ -2,7 +2,7 @@
     <div class="u-f-col">
         <head-guide></head-guide>
         <el-row :gutter="20" type="flex" justify="center" style="margin: 0;">
-            <el-col :xl="{span: 8}" :lg="{span: 10}" :md="{span: 12}" :sm="{span: 14}" :xs="{span: 16}" style="background: white; padding: 10px; box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);">
+            <el-col :xl="{span: 10}" :lg="{span: 12}" :md="{span: 14}" :sm="{span: 16}" :xs="{span: 17}" style="background: white; padding: 10px; box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);">
                 <div class="data-list">
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
@@ -19,7 +19,7 @@
                     <el-button @click="nextPage" :disabled="pageNo === totalPage" type="primary" plain>下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
                 </div>
             </el-col>
-            <el-col class="user u-f-col" :xl="{span: 4}" :lg="{span: 5}" :md="{span: 6}" :sm="{span: 7}" :xs="{span: 8}">
+            <el-col class="user u-f-col" :xl="{span: 4}" :lg="{span: 4}" :md="{span: 5}" :sm="{span: 5}" :xs="{span: 6}">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
                 <div class="tag-group">
                     <el-tag
