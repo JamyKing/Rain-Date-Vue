@@ -30,7 +30,7 @@
                         </el-date-picker>
                     </el-form-item>
                 </el-col>
-                <el-col :span="6">
+                <el-col :span="8">
                     <el-button @click="getDataList" size="small" icon="el-icon-search">搜索</el-button>
                     <el-button @click="reset" size="small">重置</el-button>
                     <el-button @click="create" type="primary" size="small" icon="el-icon-edit">写文章</el-button>
