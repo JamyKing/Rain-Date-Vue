@@ -1,8 +1,8 @@
 <template>
     <div class="u-f-col">
         <head-guide></head-guide>
-        <el-row :gutter="30" type="flex" justify="center" style="margin: 0;">
-            <el-col :span="8">
+        <el-row :gutter="20" type="flex" justify="center" style="margin: 0;">
+            <el-col :xl="{span: 8}" :lg="{span: 10}" :md="{span: 12}" :sm="{span: 14}" :xs="{span: 16}" style="background: white; padding: 10px; box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);">
                 <div class="data-list">
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
@@ -14,8 +14,12 @@
                         <div class="hr"></div>
                     </div>
                 </div>
+                <div v-show="dataList.length > 0" class="u-f-jsb" style="padding: 0 10px;">
+                    <el-button @click="prePage" :disabled="pageNo === 1" type="primary" plain icon="el-icon-arrow-left">上一页</el-button>
+                    <el-button @click="nextPage" :disabled="pageNo === totalPage" type="primary" plain>下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+                </div>
             </el-col>
-            <el-col class="user u-f-col" :span="4">
+            <el-col class="user u-f-col" :xl="{span: 4}" :lg="{span: 5}" :md="{span: 6}" :sm="{span: 7}" :xs="{span: 8}">
                 <el-image class="head" src="../../../static/imgs/head.jpg"></el-image>
                 <div class="tag-group">
                     <el-tag
@@ -28,12 +32,6 @@
                         {{tag.name}}
                     </el-tag>
                 </div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col v-show="dataList.length > 0" :span="8" :offset="6" class="u-f-jsb">
-                <el-button @click="prePage" :disabled="pageNo === 1" type="primary" icon="el-icon-arrow-left">上一页</el-button>
-                <el-button @click="nextPage" :disabled="pageNo === totalPage" type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
             </el-col>
         </el-row>
         <foot></foot>
@@ -58,6 +56,7 @@ export default {
             dataList: [],
             categoryId: null,
             pageNo: 1,
+            pageSize: 5,
             totalPage: 1
         }
     },
@@ -78,12 +77,18 @@ export default {
     },
     methods: {
         async getDataList () {
-            const { pageNo, categoryId } = this
+            const { pageNo, pageSize, categoryId } = this
             try {
-                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo, categoryId })
+                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo, pageSize, categoryId })
                 if (code === 0) {
                     this.totalPage = totalPage
                     this.dataList = listData
+                    if (totalPage === 0) {
+                        this.$alert('没有找到合适的内容，请更换条件后再次搜索~', '叮咚叮咚', {
+                            confirmButtonText: '确定',
+                            type: 'warning'
+                        })
+                    }
                 }
             } catch (err) {
                 console.error(err)
@@ -111,8 +116,8 @@ export default {
 <style lang="scss" scoped>
 .user {
     .head {
-        width: 200px;
-        height: 200px;
+        width: 80%;
+        /*height: 100px;*/
         padding: 5px;
         border: 1px solid #ddd;
         border-radius: 5px;
@@ -128,6 +133,10 @@ export default {
             }
         }
     }
+}
+.data-group {
+    background: white;
+    padding: 10px;
 }
 .data-list {
     min-height: 600px;

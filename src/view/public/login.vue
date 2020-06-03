@@ -1,28 +1,33 @@
 <template>
     <div class="login">
         <head-guide guideHeight="100%" :sayingShow="false"></head-guide>
-        <div class="login-form animated fadeInDownBig">
-            <el-form :model="loginForm" :rules="rules" ref="loginForm" size="medium" label-width="90px">
-                <el-row>
-                    <el-col :span="24" class="u-f-auto">
-                        <el-avatar class="head" src="../../../static/imgs/head.jpg"></el-avatar>
-                    </el-col>
-                    <el-col :span="20">
-                        <el-form-item label="用户名" prop="username">
-                            <el-input v-model="loginForm.username" clearable placeholder="请输入登录用户名"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="20">
-                        <el-form-item label="密码" prop="password">
-                            <el-input v-model="loginForm.password" show-password clearable placeholder="请输入登录密码"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="24" class="u-f-auto">
-                        <el-button @click="toLogin" class="login-btn" type="success" plain round>登 录</el-button>
-                    </el-col>
-                </el-row>
-            </el-form>
-        </div>
+        <el-row type="flex" justify="center" class="login-row">
+            <el-col class="login-form" :xl="{span: 8}" :lg="{span: 11}" :md="{span: 14}" :sm="{span: 18}" :xs="{span: 22}">
+                <el-form :model="loginForm" :rules="rules" ref="loginForm" size="medium" label-width="100px">
+                    <el-row>
+                        <el-col :span="24" class="u-f-auto">
+                            <el-avatar class="head" src="../../../static/imgs/head.jpg"></el-avatar>
+                        </el-col>
+                        <el-col :span="20">
+                            <el-form-item label="用户名" prop="username">
+                                <el-input v-model="loginForm.username" clearable placeholder="请输入登录用户名"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="20">
+                            <el-form-item label="密码" prop="password">
+                                <el-input v-model="loginForm.password" show-password clearable placeholder="请输入登录密码"></el-input>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="24" class="u-f-auto">
+                            <el-button @click="toLogin" class="login-btn" type="success" plain round>登 录</el-button>
+                        </el-col>
+                    </el-row>
+                </el-form>
+            </el-col>
+        </el-row>
+<!--        <div class="login-form animated fadeInDownBig">-->
+<!--            -->
+<!--        </div>-->
     </div>
 </template>
 
@@ -97,15 +102,14 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-    position: relative;
-    .login-form {
+    .login-row {
+        margin: 0;
         position: absolute;
-        top: 30%;
-        left: 40%;
-        width: 500px;
-        height: 350px;
+        top: 31%;
+        width: 100%;
+    }
+    .login-form {
         background: #e2e2e2;
-        /*opacity: 0.8!important;*/
         border-radius: 10px;
     }
 }

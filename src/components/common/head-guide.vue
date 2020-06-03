@@ -2,10 +2,10 @@
     <el-row>
         <el-col class="head" :style="[{height: guideHeight}]" :span="24">
             <el-row class="guide" type="flex" justify="space-between">
-                <el-col :span="2">
+                <el-col :xl="{span: 2}" :lg="{span: 3}" :md="{span: 4}" :sm="{span: 5}" :xs="{span: 6}">
                     <div class="guide-item u-f-auto">RainDate</div>
                 </el-col>
-                <el-col class="u-f-jsb" :span="5" :pull="1">
+                <el-col class="u-f-jsb" :xl="{span: 5, pull: 1}" :lg="{span: 9}" :md="{span: 12}" :sm="{span: 15}" :xs="{span: 18}">
                     <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
                     <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
                     <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">Admin</div>

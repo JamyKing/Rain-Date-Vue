@@ -3,41 +3,39 @@
         <head-guide guideHeight="60px" :imgShow="false" :sayingShow="false"></head-guide>
         <el-row :gutter="20" class="data-list">
             <el-form :model="filterForm" ref="filterForm" label-width="70px" size="medium" @keyup.enter.native="getDataList()">
-                <el-row :gutter="20">
-                    <el-col :span="5">
-                        <el-form-item label="标题" prop="title">
-                            <el-input v-model="filterForm.title" placeholder="文章标题" clearable></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="5">
-                        <el-form-item label="状态" prop="state">
-                            <el-select v-model="filterForm.state" placeholder="文章状态">
-                                <el-option
-                                    v-for="item in statusOptions"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="5">
-                        <el-form-item label="时间" prop="createTime">
-                            <el-date-picker
-                                v-model="filterForm.createTime"
-                                type="date"
-                                value-format="yyyy-MM-dd"
-                                placeholder="选择时间">
-                            </el-date-picker>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="6">
-                        <el-button @click="getDataList" size="small" icon="el-icon-search">搜索</el-button>
-                        <el-button @click="reset" size="small">重置</el-button>
-                        <el-button @click="create" type="primary" size="small" icon="el-icon-edit">写文章</el-button>
-                        <el-button @click="tagVisible = true" type="primary" size="small" icon="el-icon-edit">分类标签</el-button>
-                    </el-col>
-                </el-row>
+                <el-col :span="5">
+                    <el-form-item label="标题" prop="title">
+                        <el-input v-model="filterForm.title" placeholder="文章标题" clearable></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="状态" prop="state">
+                        <el-select v-model="filterForm.state" placeholder="文章状态">
+                            <el-option
+                                v-for="item in statusOptions"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="时间" prop="createTime">
+                        <el-date-picker
+                            v-model="filterForm.createTime"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择时间">
+                        </el-date-picker>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="6">
+                    <el-button @click="getDataList" size="small" icon="el-icon-search">搜索</el-button>
+                    <el-button @click="reset" size="small">重置</el-button>
+                    <el-button @click="create" type="primary" size="small" icon="el-icon-edit">写文章</el-button>
+                    <el-button @click="tagVisible = true" type="primary" size="small" icon="el-icon-edit">分类标签</el-button>
+                </el-col>
             </el-form>
         </el-row>
         <el-row :gutter="20" class="data-list">

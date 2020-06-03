@@ -2,14 +2,13 @@
     <div class="u-f-col">
         <head-guide guideHeight="60px" :imgShow="false"></head-guide>
         <el-row type="flex" justify="center">
-            <el-col :span="16">
+            <el-col :xl="{span: 16}" :lg="{span: 18}" :md="{span: 20}" :sm="{span: 22}" :xs="{span: 24}">
                 <el-card>
                     <h1 class="title">{{blogDetail.title}}</h1>
                     <div v-html="blogDetail.htmlRender" class="markdown-body" style="min-height: 600px;"></div>
                 </el-card>
             </el-col>
         </el-row>
-<!--        <el-backtop class="up-top" target="" :bottom="100" :right="100"></el-backtop>-->
         <foot></foot>
         <scroll-top></scroll-top>
     </div>

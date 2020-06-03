@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8000',  //目标接口域名
+        // target: 'http://localhost:8000',  //目标接口域名
+        target: 'http://www.jianking.vip',
         changeOrigin: true,  //是否跨域
         pathRewrite: {
           '^/api': '/api'   //重写接口
