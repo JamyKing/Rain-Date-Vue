@@ -22,7 +22,7 @@
                 </el-col>
                 <el-col :span="4">
                     <el-form-item label="标签" prop="category">
-                        <el-select v-model="dataForm.category" @change="test" multiple filterable placeholder="请选择">
+                        <el-select v-model="dataForm.category" multiple filterable placeholder="请选择">
                             <el-option
                                 v-for="item in category"
                                 :key="item.id"
@@ -108,10 +108,6 @@ export default {
         ...mapState(['category'])
     },
     methods: {
-        test (val) {
-            console.log('select携带值 => ', val)
-            console.log('dataForm => ', this.dataForm)
-        },
         async editDetail (id) {
             try {
                 const { code, data } = await this.$request('/api/blog/edit', 'GET', { id })
@@ -140,8 +136,21 @@ export default {
                 console.error(err)
             }
         },
-        imgDel (filename) {
-            console.log(filename)
+        async imgDel (filename) {
+            let name = filename[0]
+            let imgName = name.split('images/')[1]
+            try {
+                const { code } = await this.$request('/api/common/delFile', 'POST', { imgName })
+                if (code === 0) {
+                    this.$message({
+                        message: '删除成功！',
+                        type: 'success',
+                        duration: 1000
+                    })
+                }
+            } catch (err) {
+                console.error(err)
+            }
         },
         // 提交
         submit () {
