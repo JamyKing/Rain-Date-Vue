@@ -2,7 +2,7 @@
     <div class="login">
         <head-guide guideHeight="100%" :sayingShow="false"></head-guide>
         <el-row type="flex" justify="center" class="login-row">
-            <el-col class="login-form" :xl="{span: 8}" :lg="{span: 11}" :md="{span: 14}" :sm="{span: 18}" :xs="{span: 22}">
+            <el-col class="login-form animated fadeInDownBig" :xl="{span: 8}" :lg="{span: 11}" :md="{span: 14}" :sm="{span: 18}" :xs="{span: 22}">
                 <el-form :model="loginForm" :rules="rules" ref="loginForm" size="medium" label-width="100px" @keyup.enter.native="toLogin">
                     <el-row>
                         <el-col :span="24" class="u-f-auto">
@@ -25,9 +25,6 @@
                 </el-form>
             </el-col>
         </el-row>
-<!--        <div class="login-form animated fadeInDownBig">-->
-<!--            -->
-<!--        </div>-->
     </div>
 </template>
 

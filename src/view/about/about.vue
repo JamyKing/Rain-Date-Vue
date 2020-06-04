@@ -4,7 +4,13 @@
         <el-row class="u-f-cer">
             <el-col :xl="{span: 12}" :lg="{span: 15}" :md="{span: 17}" :sm="{span: 19}" :xs="{span: 22}" class="line-time">
                 <el-timeline>
-                    <el-timeline-item v-for="(item, index) in timeList" :key="index" type="success" :timestamp="item.createTime" placement="top">
+                    <el-timeline-item
+                        v-for="(item, index) in timeList"
+                        :key="index"
+                        type="success"
+                        :timestamp="item.createTime"
+                        placement="top"
+                        class="animated fadeInUp">
                         <el-card class="time-info">
                             <div class="info-title u-f">
                                 <h3>{{item.title}}</h3>
