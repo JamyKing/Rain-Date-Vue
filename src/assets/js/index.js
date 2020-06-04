@@ -5,7 +5,7 @@ import { def } from '../../conf'
 export function upload (file) {
     const baseUrl = def().baseUrl
     const formData = new FormData()
-    formData.append('image', file)
+    formData.append('file', file)
     return new Promise((resolve, reject) => {
         axios({
             url: baseUrl + '/api/common/upload',

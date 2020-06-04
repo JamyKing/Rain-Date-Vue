@@ -1,44 +1,30 @@
 <template>
     <div class="u-f-col">
         <head-guide></head-guide>
-        <el-row type="flex" justify="center">
+        <el-row class="u-f-cer">
             <el-col :xl="{span: 12}" :lg="{span: 15}" :md="{span: 17}" :sm="{span: 19}" :xs="{span: 22}" class="line-time">
                 <el-timeline>
-                    <el-timeline-item type="success" timestamp="2018/4/12" placement="top">
+                    <el-timeline-item v-for="(item, index) in timeList" :key="index" type="success" :timestamp="item.createTime" placement="top">
                         <el-card class="time-info">
                             <div class="info-title u-f">
-                                <h3>更新 Github 模板</h3>
-                                <el-link class="links" :underline="false" href="https://github.com/iRainy6661">
+                                <h3>{{item.title}}</h3>
+                                <el-link v-if="item.github" class="links" :underline="false" :href="item.github">
                                     <i class="iconfont icon-github"></i>
                                 </el-link>
-                                <el-link class="links" :underline="false" href="https://github.com/iRainy6661">
+                                <el-link v-if="item.link" class="links" :underline="false" :href="item.link">
                                     <i class="iconfont icon-link"></i>
                                 </el-link>
                             </div>
-                            <div class="info-content">
-                                兼容性良好，支持ie8+，及所有现代浏览器。
-                                相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。
-                                因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。
-                                不过因为本质上还是使用的字体，所以多色图标还是不支持的。
+                            <div class="info-content">{{item.subtitle}}</div>
+                            <div v-if="item.images" class="info-images">
+                                <el-image v-for="(image, indexImg) in item.images" :key="indexImg" class="image" fit="contain" :src="image"></el-image>
                             </div>
-                            <div class="info-images">
-                                <el-image class="image" fit="contain" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"></el-image>
-                            </div>
-                        </el-card>
-                    </el-timeline-item>
-                    <el-timeline-item type="success" timestamp="2018/4/3" placement="top">
-                        <el-card>
-                            <h4>更新 Github 模板</h4>
-                            <p>王小虎 提交于 2018/4/3 20:46</p>
-                        </el-card>
-                    </el-timeline-item>
-                    <el-timeline-item type="success" timestamp="2018/4/2" placement="top">
-                        <el-card>
-                            <h4>更新 Github 模板</h4>
-                            <p>王小虎 提交于 2018/4/2 20:46</p>
                         </el-card>
                     </el-timeline-item>
                 </el-timeline>
+            </el-col>
+            <el-col :xl="{span: 6}" :lg="{span: 9}" :md="{span: 12}" :sm="{span: 15}" :xs="{span: 18}">
+                <el-card v-show="pageNo < totalPage" @click="loadMore" shadow="hover" class="load-more u-f-auto" :body-style="{padding: '16px'}">加载更多</el-card>
             </el-col>
         </el-row>
         <foot></foot>
@@ -63,7 +49,7 @@ export default {
         }
     },
     created() {
-        // this.getDataList()
+        this.getDataList()
     },
     methods: {
         async getDataList () {
@@ -72,13 +58,15 @@ export default {
                 const { code, data: { totalPage, listData } } = await this.$request('/api/timeLine/list', 'POST', { pageNo, pageSize })
                 if (code === 0) {
                     this.totalPage = totalPage
-                    this.timeList = listData
-                    console.log(totalPage)
-                    console.log(listData)
+                    this.timeList = [ ...this.timeList, ...listData ]
                 }
             } catch (err) {
                 console.error(err)
             }
+        },
+        loadMore () {
+            this.pageNo += 1
+            this.getDataList()
         }
     }
 }
@@ -103,6 +91,11 @@ export default {
             width: 200px;
             height: 200px;
         }
+    }
+}
+.load-more {
+    &:hover {
+        cursor: pointer;
     }
 }
 </style>
