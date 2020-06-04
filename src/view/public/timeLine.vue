@@ -2,7 +2,7 @@
     <el-dialog
         title="添加时间节点"
         :visible.sync="sync_value"
-        width="40%"
+        width="45%"
         :close-on-click-modal="false"
         :before-close="handleClose">
         <el-form :model="dataForm" ref="dataForm" :rules="rules" label-width="80px" size="medium">
@@ -25,6 +25,16 @@
                 <el-col :span="18">
                     <el-form-item label="线上地址" prop="link">
                         <el-input v-model="dataForm.link" placeholder="线上地址"></el-input>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="18">
+                    <el-form-item label="完成时间" prop="completeTime">
+                        <el-date-picker
+                            v-model="dataForm.completeTime"
+                            type="date"
+                            value-format="yyyy-MM-dd"
+                            placeholder="选择时间">
+                        </el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="18">
@@ -70,6 +80,7 @@ export default {
                 subtitle: '',
                 github: '',
                 link: '',
+                completeTime: '',
                 images: []
             },
             fileList: [],

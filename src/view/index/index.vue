@@ -96,6 +96,7 @@ export default {
         },
         tagSelected (id) {
             this.categoryId = id
+            this.pageNo = 1
             this.getDataList()
         },
         getDetail (id) {

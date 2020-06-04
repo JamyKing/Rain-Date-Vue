@@ -8,7 +8,7 @@
                         v-for="(item, index) in timeList"
                         :key="index"
                         type="success"
-                        :timestamp="item.createTime"
+                        :timestamp="item.completeTime"
                         placement="top"
                         class="animated fadeInUp">
                         <el-card class="time-info">
