@@ -3,12 +3,12 @@
         <el-col :span="12" class="u-f-col">
             <div class="links u-f-auto">
                 <el-link :underline="false" href="https://github.com/iRainy6661">
-                    <el-avatar src="../../../static/icon/github.png"></el-avatar>
+                    <i class="iconfont icon-github" style="font-size: 30px;"></i>
                 </el-link>
             </div>
             <div class="copyright">
-                Copyright 2020 Rain All rights Reserved.
-                <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP20019063号</a>
+                Copyright © 2020 Rain All rights Reserved.
+                <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备20019063号-1</a>
             </div>
         </el-col>
     </el-row>
