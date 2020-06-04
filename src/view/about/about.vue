@@ -54,6 +54,33 @@ export default {
         headGuide,
         foot
     },
+    data() {
+        return {
+            timeList: [],
+            pageNo: 1,
+            pageSize: 5,
+            totalPage: 1
+        }
+    },
+    created() {
+        // this.getDataList()
+    },
+    methods: {
+        async getDataList () {
+            const { pageNo, pageSize } = this
+            try {
+                const { code, data: { totalPage, listData } } = await this.$request('/api/timeLine/list', 'POST', { pageNo, pageSize })
+                if (code === 0) {
+                    this.totalPage = totalPage
+                    this.timeList = listData
+                    console.log(totalPage)
+                    console.log(listData)
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        }
+    }
 }
 </script>
 

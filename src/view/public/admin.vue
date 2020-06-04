@@ -34,6 +34,7 @@
                     <el-button @click="getDataList" size="small" icon="el-icon-search">搜索</el-button>
                     <el-button @click="reset" size="small">重置</el-button>
                     <el-button @click="create" type="primary" size="small" icon="el-icon-edit">写文章</el-button>
+                    <el-button @click="timeVisible = true" type="primary" size="small" icon="el-icon-edit">时间轴</el-button>
                     <el-button @click="tagVisible = true" type="primary" size="small" icon="el-icon-edit">分类标签</el-button>
                 </el-col>
             </el-form>
@@ -84,6 +85,7 @@
             </el-col>
         </el-row>
         <tag-house v-model="tagVisible"></tag-house>
+        <time-line v-model="timeVisible"></time-line>
     </div>
 </template>
 
@@ -91,11 +93,13 @@
 import { mapState } from 'vuex'
 import headGuide from '@/components/common/head-guide'
 import tagHouse from './tagHouse'
+import timeLine from './timeLine'
 export default {
     name: 'admin',
     components: {
         headGuide,
-        tagHouse
+        tagHouse,
+        timeLine
     },
     data() {
         return {
@@ -116,7 +120,8 @@ export default {
             pageSize: 10,
             totalCount: 0,
             dataListLoading: false,
-            tagVisible: false
+            tagVisible: false,
+            timeVisible: false
         }
     },
     created() {

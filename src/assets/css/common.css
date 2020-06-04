@@ -14,18 +14,18 @@ ul,li,ol{
 }
 
 /* flex布局 */
-.u-f,.u-f-rc,.u-f-auto,.u-f-jsb,.u-f-col{
+.u-f,.u-f-rc,.u-f-auto,.u-f-jsb,.u-f-col,.u-f-cer{
 	display: flex;
 }
 .u-f-rc,.u-f-auto{
 	justify-content: center;
 }
-.u-f-auto{
+.u-f-auto,.u-f-cer{
 	align-items: center;
 }
 .u-f-jsb{
 	justify-content: space-between;
 }
-.u-f-col{
+.u-f-col,.u-f-cer{
 	flex-direction: column;
 }
