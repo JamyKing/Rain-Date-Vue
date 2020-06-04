@@ -17,7 +17,15 @@
                             </div>
                             <div class="info-content">{{item.subtitle}}</div>
                             <div v-if="item.images" class="info-images">
-                                <el-image v-for="(image, indexImg) in item.images" :key="indexImg" class="image" fit="contain" :src="image"></el-image>
+                                <el-image
+                                    v-for="(image, indexImg) in item.images"
+                                    :key="indexImg"
+                                    fit="contain"
+                                    :src="image"
+                                    @click="preview(item.images)"
+                                    :preview-src-list="srcList"
+                                    class="image">
+                                </el-image>
                             </div>
                         </el-card>
                     </el-timeline-item>
@@ -45,7 +53,8 @@ export default {
             timeList: [],
             pageNo: 1,
             pageSize: 5,
-            totalPage: 1
+            totalPage: 1,
+            srcList: []
         }
     },
     created() {
@@ -63,6 +72,9 @@ export default {
             } catch (err) {
                 console.error(err)
             }
+        },
+        preview (images) {
+            this.srcList = images
         },
         loadMore () {
             this.pageNo += 1
@@ -90,6 +102,9 @@ export default {
         .image {
             width: 200px;
             height: 200px;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

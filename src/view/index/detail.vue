@@ -5,6 +5,7 @@
             <el-col :xl="{span: 16}" :lg="{span: 18}" :md="{span: 20}" :sm="{span: 22}" :xs="{span: 24}">
                 <el-card>
                     <h1 class="title">{{blogDetail.title}}</h1>
+                    <div class="time">{{blogDetail.createTime}}</div>
                     <div v-html="blogDetail.htmlRender" class="markdown-body" style="min-height: 600px;"></div>
                 </el-card>
             </el-col>
@@ -52,7 +53,10 @@ export default {
 
 <style lang="scss" scoped>
 .title {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.time {
+    margin: 5px 10px 20px;
 }
 .up-top {
     height: 50px;
