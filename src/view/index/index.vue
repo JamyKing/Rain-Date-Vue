@@ -142,6 +142,7 @@ export default {
 .data-list {
     min-height: 600px;
     .list-item {
+        padding: 0 20px;
         &:hover {
             cursor: pointer;
         }
