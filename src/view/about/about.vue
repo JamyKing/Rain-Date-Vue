@@ -39,7 +39,14 @@
                 </el-timeline>
             </el-col>
             <el-col :xl="{span: 6}" :lg="{span: 9}" :md="{span: 12}" :sm="{span: 15}" :xs="{span: 18}">
-                <el-card v-show="pageNo < totalPage" @click="loadMore" shadow="hover" class="load-more u-f-auto" :body-style="{padding: '16px'}">加载更多</el-card>
+                <el-card
+                    v-show="pageNo < totalPage"
+                    shadow="hover"
+                    @click.native="loadMores"
+                    class="load-more u-f-auto"
+                    :body-style="{padding: '16px'}">
+                    加载更多
+                </el-card>
             </el-col>
         </el-row>
         <foot></foot>
@@ -83,7 +90,7 @@ export default {
         preview (images) {
             this.srcList = images
         },
-        loadMore () {
+        loadMores () {
             this.pageNo += 1
             this.getDataList()
         }
@@ -98,7 +105,8 @@ export default {
 .time-info {
     .info-title {
         .links {
-            margin: 0 3px;
+            margin: 0 5px;
+            line-height: 25px;
         }
     }
     .info-content {
