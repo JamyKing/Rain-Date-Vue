@@ -30,6 +30,7 @@
                                     :src="image"
                                     @click="preview(item.images)"
                                     :preview-src-list="srcList"
+                                    lazy
                                     class="image">
                                 </el-image>
                             </div>
