@@ -2,7 +2,7 @@
     <el-row class="foot" type="flex" justify="center">
         <el-col :span="12" class="u-f-col">
             <div class="links u-f-auto">
-                <el-link :underline="false" href="https://github.com/iRainy6661">
+                <el-link :underline="false" href="https://github.com/iRainy6661/Rain-Date-Vue">
                     <i class="iconfont icon-github" style="font-size: 30px;"></i>
                 </el-link>
             </div>
