@@ -62,7 +62,7 @@ export default {
             this.$router.push({ name: url })
         },
         async getAim () {
-            if (this.sayingShow) {
+            if (this.imgShow && this.sayingShow) {
                 try {
                     const { code, data } = await this.$request('/api/common/getAim', 'GET')
                     if (code === 0) {
