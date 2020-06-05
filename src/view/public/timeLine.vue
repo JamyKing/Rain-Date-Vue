@@ -92,6 +92,9 @@ export default {
                 ],
                 subtitle: [
                     { required: true, message: '请输入简介说明', trigger: 'blur' }
+                ],
+                completeTime: [
+                    { required: true, message: '请输入完成时间', trigger: 'blur' }
                 ]
             }
         }
