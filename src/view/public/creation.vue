@@ -27,7 +27,7 @@
                                 v-for="item in category"
                                 :key="item.id"
                                 :label="item.name"
-                                :value="item.id">
+                                :value="item.name + '_' + item.type">
                             </el-option>
                         </el-select>
                     </el-form-item>

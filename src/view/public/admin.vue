@@ -52,7 +52,7 @@
                     <el-table-column prop="title" label="标题" align="center"></el-table-column>
                     <el-table-column prop="category" label="标签" align="center">
                         <template slot-scope="scope" v-if="scope.row.category">
-                            <el-tag v-for="tag in scope.row.category" :key="tag" style="margin: 0 3px;">{{tag | categoryFilter(category)}}</el-tag>
+                            <el-tag v-for="tag in scope.row.category" :key="tag.name" :type="tag.type" style="margin: 0 3px;">{{tag.name}}</el-tag>
                         </template>
                     </el-table-column>
                     <el-table-column prop="subtitle" label="简介" align="center"></el-table-column>
@@ -127,21 +127,9 @@ export default {
     created() {
         this.getDataList()
     },
-    activated() {
-    },
     computed: {
         ...mapState(['category'])
     },
-    filters: {
-        categoryFilter (code, category) {
-            for (let item of category) {
-                if (item.id === code) {
-                    return item.name
-                }
-            }
-        }
-    },
-    watch: {},
     methods: {
         async getDataList () {
             this.dataListLoading = true

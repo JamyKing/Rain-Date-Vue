@@ -7,7 +7,7 @@
                     <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)" class="list-item animated fadeIn">
                         <h2 class="title">{{item.title}}</h2>
                         <div v-if="item.category">
-                            <el-tag v-for="tag in item.category" :key="tag" type="success" style="margin: 0 3px;">{{tag | categoryFilter(category)}}</el-tag>
+                            <el-tag v-for="tag in item.category" :key="tag.name" :type="tag.type" style="margin: 0 3px;">{{tag.name}}</el-tag>
                         </div>
                         <h3 class="sub-title">{{item.subtitle}}</h3>
                         <p class="meta">{{item.createTime}}</p>
@@ -26,8 +26,8 @@
                         v-for="tag in category"
                         :key="tag.id"
                         :type="tag.type"
-                        :effect="tag.id === categoryId ? 'dark' : 'plain'"
-                        @click="tagSelected(tag.id)"
+                        :effect="tag.name === categoryName ? 'dark' : 'plain'"
+                        @click="tagSelected(tag.name)"
                         class="tags animated fadeInDown">
                         {{tag.name}}
                     </el-tag>
@@ -54,7 +54,7 @@ export default {
     data() {
         return {
             dataList: [],
-            categoryId: null,
+            categoryName: '',
             pageNo: 1,
             pageSize: 5,
             totalPage: 1
@@ -66,20 +66,11 @@ export default {
     computed: {
         ...mapState(['category'])
     },
-    filters: {
-        categoryFilter (code, category) {
-            for (let item of category) {
-                if (item.id === code) {
-                    return item.name
-                }
-            }
-        }
-    },
     methods: {
         async getDataList () {
-            const { pageNo, pageSize, categoryId } = this
+            const { pageNo, pageSize, categoryName } = this
             try {
-                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo, pageSize, categoryId })
+                const { code, data: { totalPage, listData } } = await this.$request('/api/blog/indexList', 'POST', { pageNo, pageSize, categoryName })
                 if (code === 0) {
                     this.totalPage = totalPage
                     this.dataList = listData
@@ -94,8 +85,8 @@ export default {
                 console.error(err)
             }
         },
-        tagSelected (id) {
-            this.categoryId = id
+        tagSelected (name) {
+            this.categoryName = name
             this.pageNo = 1
             this.getDataList()
         },
