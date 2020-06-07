@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import index from '@/view/index/index'
-// import detail from '@/view/index/detail'
-// import about from '@/view/about/about'
-// import login from '@/view/public/login'
-// import admin from '@/view/public/admin'
-// import creation from '@/view/public/creation'
 
 Vue.use(Router)
 

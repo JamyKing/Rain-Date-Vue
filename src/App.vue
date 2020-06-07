@@ -1,5 +1,5 @@
 <template>
-    <keep-alive :include="['index', 'about']">
+    <keep-alive :include="['index', 'about', 'admin']">
         <router-view></router-view>
     </keep-alive>
 </template>
