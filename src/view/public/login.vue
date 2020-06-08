@@ -19,6 +19,16 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="24" class="u-f-auto">
+                            <byui-verify
+                                ref="verifyImg"
+                                :w="350"
+                                :slider-text="text"
+                                :h="175"
+                                @success="handleSuccess"
+                                @fail="handleError">
+                            </byui-verify>
+                        </el-col>
+                        <el-col :span="24" class="u-f-auto">
                             <el-button @click="toLogin" class="login-btn" type="success" plain round>登 录</el-button>
                         </el-col>
                     </el-row>
@@ -29,10 +39,12 @@
 </template>
 
 <script>
+import ByuiVerify from 'zx-verify'
 import headGuide from '@/components/common/head-guide'
 export default {
     name: 'login',
     components: {
+        ByuiVerify,
         headGuide
     },
     data() {
@@ -41,6 +53,8 @@ export default {
                 username: '',
                 password: ''
             },
+            text: '向右滑动',
+            verifyCode: false,
             rules: {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' }
@@ -58,13 +72,33 @@ export default {
             username: '',
             password: ''
         }
+        this.verifyCode = false
     },
     computed: {},
     watch: {},
     methods: {
+        handleSuccess() {
+            this.verifyCode = true
+            this.$message({
+                message: '图形校验成功！',
+                type: 'success',
+                duration: '1000'
+            })
+        },
+        handleError() {
+            this.verifyCode = false
+            this.$message({
+                message: '图形校验失败！',
+                type: 'error',
+                duration: '1000',
+                onClose: () => {
+                    this.$refs.verifyImg.reset()
+                }
+            })
+        },
         toLogin () {
             this.$refs['loginForm'].validate(async (valid) => {
-                if (valid) {
+                if (valid && this.verifyCode) {
                     const {loginForm} = this
                     try {
                         const { code, data } = await this.$request('/api/user/login', 'POST', { ...loginForm })
@@ -79,14 +113,14 @@ export default {
                                 }
                             })
                         } else {
-                            this.$message.error('登录出错了！')
+                            this.$message.error('用户名或密码错误！')
                         }
                     } catch (err) {
                         this.$message.error(err)
                     }
                 } else {
                     this.$message({
-                        message: '请正确输入信息！',
+                        message: '请正确输入登录信息和通过图形验证！',
                         type: 'warning'
                     })
                     return false
@@ -102,7 +136,7 @@ export default {
     .login-row {
         margin: 0;
         position: absolute;
-        top: 31%;
+        top: 24%;
         width: 100%;
     }
     .login-form {
