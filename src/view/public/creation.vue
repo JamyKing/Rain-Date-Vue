@@ -126,9 +126,18 @@ export default {
         // 绑定@imgAdd event
         async imgAdd (pos, $file) {
             try {
-                const { code, data: { url } } = await upload($file)
-                if (code === 0) {
-                    this.$refs.md.$img2Url(pos, url)
+                const res = await upload($file)
+                if (res.code === 0) {
+                    this.$refs.md.$img2Url(pos, res.data.url)
+                } else if (res.code === 401) {
+                    this.$message({
+                        message: '未登录！',
+                        type: 'error',
+                        duration: '1000',
+                        onClose: () => {
+                            this.$router.push({ name: 'login' })
+                        }
+                    })
                 } else {
                     this.$message.error('上传失败！')
                 }

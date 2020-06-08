@@ -1,4 +1,6 @@
 import axios from 'axios'
+import router from '@/router'
+import store from '@/store'
 import { def } from '../conf'
 
 const http = axios.create({
@@ -22,15 +24,15 @@ const http = axios.create({
 /**
  * 响应拦截
  */
-// http.interceptors.response.use(response => {
-//     if (response.data && response.data.code === 401) { // 401, token失效
-//         clearLoginInfo()
-//         router.push({name: 'login'})
-//     }
-//     return response
-// }, error => {
-//     return Promise.reject(error)
-// })
+http.interceptors.response.use(response => {
+    if (response.data && response.data.code === 401) { // 401, 未登录
+        store.commit('logout')
+        router.push({name: 'login'})
+    }
+    return response
+}, error => {
+    return Promise.reject(error)
+})
 
 const baseUrl = def().baseUrl
 
