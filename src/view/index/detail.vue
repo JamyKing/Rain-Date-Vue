@@ -58,13 +58,4 @@ export default {
 .time {
     margin: 5px 10px 20px;
 }
-.up-top {
-    height: 50px;
-    width: 50px;
-    background-color: #DCDFE6;
-    box-shadow: 0 0 6px rgba(0,0,0, .12);
-    text-align: center;
-    line-height: 40px;
-    color: #1989fa;
-}
 </style>
