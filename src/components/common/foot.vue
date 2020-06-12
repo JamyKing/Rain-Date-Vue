@@ -10,6 +10,12 @@
                 Copyright © 2020 Rain All rights Reserved.
                 <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备20019063号-1</a>
             </div>
+            <div class="record u-f-auto">
+                <el-image class="record-image" src="../../../static/imgs/record.png"></el-image>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010934">
+                    浙公网安备 33010802010934号
+                </a>
+            </div>
         </el-col>
     </el-row>
 </template>
@@ -28,10 +34,10 @@ export default {
     background: #3b3b3b;
 }
 .links {
-    height: 120px;
+    height: 110px;
     margin: 0 auto;
 }
-.copyright {
+.copyright,.record {
     margin: 0 auto;
     color: white;
     font-size: 12px;
