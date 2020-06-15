@@ -15,7 +15,7 @@
                     <div v-if="!hasLogin" @click="navTo('login')" class="guide-item u-f-auto">Login</div>
                 </el-col>
             </el-row>
-            <el-image v-if="imgShow" class="bg-img" fit="cover" lazy :src="bgImg"></el-image>
+            <el-image v-if="imgShow" class="bg-img" fit="cover" src="https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/yeying.png" lazy></el-image>
             <div v-if="sayingShow" class="saying u-f-auto animated flipInX">
                 <h1 v-html="feature"></h1>
             </div>
@@ -28,10 +28,10 @@ import { mapState } from 'vuex'
 export default {
     name: 'headGuide',
     props: {
-        bgImg: {
-            type: String,
-            default: '../../../static/imgs/yeying.png'
-        },
+        // bgImg: {
+        //     type: String,
+        //     default: '../../../static/imgs/yeying.png'
+        // },
         guideHeight: {
             type: String,
             default: '500px'
