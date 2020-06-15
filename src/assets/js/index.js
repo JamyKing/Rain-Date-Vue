@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { def } from '../../conf'
 
 // 上传图片
