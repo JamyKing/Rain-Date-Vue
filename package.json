@@ -11,13 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
-    "element-ui": "^2.13.2",
     "mavon-editor": "^2.9.0",
-    "vue": "^2.5.2",
-    "vue-propsync": "^0.1.3",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.4.0"
+    "vue-propsync": "^0.1.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
