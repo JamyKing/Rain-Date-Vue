@@ -84,8 +84,8 @@
                 </el-pagination>
             </el-col>
         </el-row>
-        <tag-house v-model="tagVisible"></tag-house>
-        <time-line v-model="timeVisible"></time-line>
+        <tag-house v-if="hasLogin" v-model="tagVisible"></tag-house>
+        <time-line v-if="hasLogin" v-model="timeVisible"></time-line>
     </div>
 </template>
 
@@ -128,7 +128,7 @@ export default {
         this.getDataList()
     },
     computed: {
-        ...mapState(['category'])
+        ...mapState(['hasLogin', 'category'])
     },
     methods: {
         async getDataList () {
