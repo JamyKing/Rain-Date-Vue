@@ -2,8 +2,17 @@
     <el-row class="foot" type="flex" justify="center">
         <el-col :span="12" class="u-f-col">
             <div class="links u-f-auto">
-                <el-link :underline="false" href="https://github.com/iRainy6661/Rain-Date-Vue">
+                <el-link class="link-item" :underline="false" href="https://github.com/iRainy6661/Rain-Date-Vue">
                     <i class="iconfont icon-github" style="font-size: 30px;"></i>
+                </el-link>
+                <el-link class="link-item" :underline="false" href="http://demo.jianking.vip/">
+                    <i class="iconfont icon-demo" style="font-size: 30px;"></i>
+                </el-link>
+                <el-link class="link-item" :underline="false" href="https://ext.dcloud.net.cn/publisher?id=187555">
+                    <i class="iconfont icon-uniapp" style="font-size: 30px;"></i>
+                </el-link>
+                <el-link class="link-item" :underline="false" href="https://www.jianshu.com/u/82889182f257">
+                    <i class="iconfont icon-jianshu" style="font-size: 30px;"></i>
                 </el-link>
             </div>
             <div class="copyright">
@@ -36,6 +45,9 @@ export default {
 .links {
     height: 110px;
     margin: 0 auto;
+    .link-item {
+        margin: 0 5px;
+    }
 }
 .copyright,.record {
     margin: 0 auto;
