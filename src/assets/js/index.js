@@ -11,7 +11,7 @@ export function upload (file) {
             url: baseUrl + '/api/common/upload',
             method: 'POST',
             data: formData,
-            headers: { 'Content-Type': 'multipart/form-data' },
+            headers: { 'Content-Type': 'multipart/form-data' }
         }).then((res) => {
             resolve(res.data)
         }).catch(err => {
