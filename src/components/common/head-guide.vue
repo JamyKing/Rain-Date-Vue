@@ -16,8 +16,9 @@
                 </el-col>
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" src="https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/yeying.png" lazy></el-image>
-            <div v-if="sayingShow" class="saying u-f-auto animated flipInX">
-                <h1 v-html="feature"></h1>
+            <div v-if="sayingShow" class="saying u-f-cer animated flipInX">
+                <h1>{{feature}}</h1>
+                <h3 v-if="extract !== '无'">-《{{extract}}》</h3>
             </div>
         </el-col>
     </el-row>
@@ -28,10 +29,6 @@ import { mapState } from 'vuex'
 export default {
     name: 'headGuide',
     props: {
-        // bgImg: {
-        //     type: String,
-        //     default: '../../../static/imgs/yeying.png'
-        // },
         guideHeight: {
             type: String,
             default: '500px'
@@ -114,6 +111,13 @@ export default {
             max-width: 500px;
             color: white;
             text-align: center;
+            font-family: cursive;
+            margin-bottom: 30px;
+        }
+        h3 {
+            width: 500px;
+            color: white;
+            text-align: right;
             font-family: cursive;
         }
     }
