@@ -115,9 +115,7 @@ export default {
             margin-bottom: 30px;
         }
         h3 {
-            width: 500px;
             color: white;
-            text-align: right;
             font-family: cursive;
         }
     }
