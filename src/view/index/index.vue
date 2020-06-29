@@ -31,6 +31,8 @@
                         class="tags animated fadeInDown">
                         {{tag.name}}
                     </el-tag>
+                    <!--全部标签-->
+                    <el-tag @click="tagSelected()" type="info" effect="plain" class="tags animated fadeInDown">ALL</el-tag>
                 </div>
             </el-col>
         </el-row>
