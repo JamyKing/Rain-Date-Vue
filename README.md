@@ -1,6 +1,6 @@
 # RainDate
 
-> 个人博客网站 [您这边请↗](http://www.jianking.vip/)
+> 个人博客网站 [这边请↗](http://www.jianking.vip/)
 
 ## 网站简介
 
