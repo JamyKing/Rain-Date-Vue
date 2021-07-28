@@ -7,6 +7,11 @@ const store = new Vuex.Store({
 	state: {
 		hasLogin: false,
 		userName: '',
+		spring: {
+			id: 0,
+			extract: '',
+			feature: ''
+		},
 		category: []
 	},
 	mutations: {
@@ -20,6 +25,9 @@ const store = new Vuex.Store({
 		},
 		setCategory(state, provider) {
 			state.category = provider
+		},
+		setSpring(state, provider) {
+			state.spring = provider
 		}
 	},
 	getters: {

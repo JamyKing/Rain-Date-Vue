@@ -17,8 +17,8 @@
             </el-row>
             <el-image v-if="imgShow" class="bg-img" fit="cover" src="https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/yeying.png" lazy></el-image>
             <div v-if="sayingShow" class="saying u-f-cer animated flipInX">
-                <h1>{{feature}}</h1>
-                <h3 v-if="extract !== '无'">-《{{extract}}》</h3>
+                <h1>{{spring.feature}}</h1>
+                <h3 v-if="spring.extract !== '无'">-《{{spring.extract}}》</h3>
             </div>
         </el-col>
     </el-row>
@@ -44,27 +44,25 @@ export default {
     },
     data() {
         return {
-            extract: '',
-            feature: ''
+            hello: 'hello'
         }
     },
     created() {
         this.getAim()
     },
     computed: {
-        ...mapState(['hasLogin'])
+        ...mapState(['hasLogin', 'spring'])
     },
     methods: {
         navTo (url) {
             this.$router.push({ name: url })
         },
         async getAim () {
-            if (this.imgShow && this.sayingShow) {
+            if (!this.spring.id && this.imgShow && this.sayingShow) {
                 try {
                     const { code, data } = await this.$request('/api/common/getAim', 'GET')
                     if (code === 0) {
-                        this.extract = data.extract
-                        this.feature = data.feature
+                        this.$store.commit('setSpring', data)
                     }
                 } catch (err) {
                     console.error(err)

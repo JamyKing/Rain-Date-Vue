@@ -11,19 +11,17 @@
                 <el-link class="link-item" :underline="false" href="https://ext.dcloud.net.cn/publisher?id=187555">
                     <i class="iconfont icon-uniapp" style="font-size: 30px;"></i>
                 </el-link>
-                <el-link class="link-item" :underline="false" href="https://www.jianshu.com/u/82889182f257">
+                <!-- <el-link class="link-item" :underline="false" href="https://www.jianshu.com/u/82889182f257">
                     <i class="iconfont icon-jianshu" style="font-size: 30px;"></i>
-                </el-link>
+                </el-link> -->
             </div>
             <div class="copyright">
-                Copyright © 2020 Rain All rights Reserved.
+                Copyright © 2021 Jank All rights Reserved.
                 <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备20019063号-1</a>
             </div>
             <div class="record u-f-auto">
                 <el-image class="record-image" src="../../../static/imgs/record.png"></el-image>
-                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010934">
-                    浙公网安备 33010802010934号
-                </a>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010802010934">浙公网安备 33010802010934号</a>
             </div>
         </el-col>
     </el-row>
