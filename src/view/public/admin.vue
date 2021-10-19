@@ -125,6 +125,9 @@ export default {
         }
     },
     created() {
+        // this.getDataList()
+    },
+    activated() {
         this.getDataList()
     },
     computed: {
