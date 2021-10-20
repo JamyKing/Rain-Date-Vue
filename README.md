@@ -14,7 +14,7 @@
 
 ``` bash
 # git clone
-git clone git@github.com:iRainy6661/Rain-Date-Vue.git
+git clone git@github.com:JamyKing/Rain-Date-Vue.git
 
 # install dependencies
 npm install
