@@ -1,14 +1,12 @@
 // import axios from 'axios'
-import { def } from '../../conf'
 
 // 上传图片
 export function upload (file) {
-    const baseUrl = def().baseUrl
     const formData = new FormData()
     formData.append('file', file)
     return new Promise((resolve, reject) => {
         axios({
-            url: baseUrl + '/api/common/upload',
+            url: '/api/common/upload',
             method: 'POST',
             data: formData,
             headers: { 'Content-Type': 'multipart/form-data' }

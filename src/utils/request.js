@@ -1,7 +1,6 @@
 // import axios from 'axios'
 import router from '@/router'
 import store from '@/store'
-import { def } from '../conf'
 
 const http = axios.create({
     timeout: 1000 * 30,
@@ -34,12 +33,10 @@ http.interceptors.response.use(response => {
     return Promise.reject(error)
 })
 
-const baseUrl = def().baseUrl
-
 const request = (url, method, data = {}) => {
     return new Promise((resolve, reject) => {
         http({
-            url: baseUrl + url,
+            url: url,
             method: method,
             [method === 'GET' ? 'params' : 'data']: data
         }).then(res => {
