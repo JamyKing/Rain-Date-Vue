@@ -3,11 +3,11 @@ import router from '@/router'
 import store from '@/store'
 
 const http = axios.create({
-    timeout: 1000 * 30,
-    withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-    }
+  timeout: 1000 * 30,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json; charset=utf-8'
+  }
 })
 
 /**
@@ -24,27 +24,27 @@ const http = axios.create({
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-    if (response.data && response.data.code === 401) { // 401, 未登录
-        store.commit('logout')
-        router.push({name: 'login'})
-    }
-    return response
+  if (response.data && response.data.code === 401) { // 401, 未登录
+    store.commit('logout')
+    router.push({name: 'login'})
+  }
+  return response
 }, error => {
-    return Promise.reject(error)
+  return Promise.reject(error)
 })
 
 const request = (url, method, data = {}) => {
-    return new Promise((resolve, reject) => {
-        http({
-            url: url,
-            method: method,
-            [method === 'GET' ? 'params' : 'data']: data
-        }).then(res => {
-            resolve(res.data)
-        }).catch(err => {
-            reject(err)
-        })
+  return new Promise((resolve, reject) => {
+    http({
+      url: url,
+      method: method,
+      [method === 'GET' ? 'params' : 'data']: data
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => {
+      reject(err)
     })
+  })
 }
 
 export default request

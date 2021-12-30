@@ -9,16 +9,3 @@
 ![RainDate1](https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/raindate1.png)
 
 ![RainDate2](https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/raindata2.png)
-
-## Build Setup
-
-``` bash
-# git clone
-git clone git@github.com:JamyKing/Rain-Date-Vue.git
-
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-```
