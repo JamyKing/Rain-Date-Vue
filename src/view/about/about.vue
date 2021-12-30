@@ -121,9 +121,12 @@ export default {
   }
 
   .info-images {
+    display: flex;
+    flex-wrap: wrap;
     .image {
       width: 200px;
       height: 200px;
+      margin-right: 20px;
 
       &:hover {
         cursor: pointer;
