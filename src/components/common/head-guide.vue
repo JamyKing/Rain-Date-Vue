@@ -17,7 +17,7 @@
         </el-col>
       </el-row>
       <el-image v-if="imgShow" class="bg-img" fit="cover"
-                src="https://raindate.oss-cn-hangzhou.aliyuncs.com/RainDate/yeying.png" lazy></el-image>
+                src="http://www.jianking.vip/static/RainDate/yeying.png" lazy></el-image>
       <div v-if="sayingShow" class="saying u-f-cer animated flipInX">
         <h1>{{ spring.feature }}</h1>
         <h3 v-if="spring.extract !== '无'">-《{{ spring.extract }}》</h3>
