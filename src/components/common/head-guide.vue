@@ -3,7 +3,7 @@
     <el-col class="head" :style="[{height: guideHeight}]" :span="24">
       <el-row class="guide" type="flex" justify="space-between">
         <el-col :xl="{span: 2}" :lg="{span: 3}" :md="{span: 4}" :sm="{span: 5}" :xs="{span: 6}">
-          <div class="guide-item u-f-auto">RainDate</div>
+          <div class="guide-item u-f-auto">棋剑乐府</div>
         </el-col>
         <el-col class="u-f-jsb" :xl="{span: 5, pull: 1}" :lg="{span: 9}" :md="{span: 12}" :sm="{span: 15}"
                 :xs="{span: 18}">
