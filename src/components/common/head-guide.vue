@@ -16,8 +16,7 @@
           <div v-if="!hasLogin" @click="navTo('login')" class="guide-item u-f-auto">Login</div>
         </el-col>
       </el-row>
-      <el-image v-if="imgShow" class="bg-img" fit="cover"
-                src="http://www.jianking.vip/static/RainDate/yeying.png" lazy></el-image>
+      <el-image v-if="imgShow" class="bg-img" fit="cover" src="http://www.jianking.vip/resource/RainDate/yeying.png" lazy></el-image>
       <div v-if="sayingShow" class="saying u-f-cer animated flipInX">
         <h1>{{ spring.feature }}</h1>
         <h3 v-if="spring.extract !== '无'">-《{{ spring.extract }}》</h3>
