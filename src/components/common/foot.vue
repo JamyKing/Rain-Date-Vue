@@ -16,8 +16,8 @@
         </el-link> -->
       </div>
       <div class="copyright">
-        Copyright © 2022 JamyKing All rights Reserved.
-        <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备20019063号-1</a>
+        Copyright © 2023 JamyKing All rights Reserved.
+        <a rel="nofollow" href="https://beian.miit.gov.cn" target="_blank">浙ICP备20019063号-1</a>
       </div>
       <div class="record u-f-auto">
         <el-image class="record-image" src="../../../static/imgs/record.png"></el-image>
