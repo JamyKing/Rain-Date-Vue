@@ -22,9 +22,16 @@ export default {
   methods: {
     async getCategory() {
       try {
-        const {code, data} = await this.$request('/api/category/list', 'GET')
-        if (code === 0) {
-          this.$store.commit('setCategory', data)
+        const cateRes = await this.$request('/api/category/list', 'GET')
+        if (cateRes.code === 0) {
+          this.$store.commit('setCategory', cateRes.data)
+        }
+        // 登录状态校验
+        const loginRes = await this.$request('/api/user/loginVerify', 'GET')
+        if (loginRes.code === 0 && loginRes.data) {
+          this.$store.commit('login', 'jjk6661')
+        } else {
+          this.$store.commit('logout')
         }
       } catch (err) {
         console.error(err)
