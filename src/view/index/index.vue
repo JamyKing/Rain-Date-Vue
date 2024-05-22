@@ -5,7 +5,7 @@
       <el-col :xl="{span: 10}" :lg="{span: 12}" :md="{span: 14}" :sm="{span: 16}" :xs="{span: 17}"
               style="background: white; padding: 10px; box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);">
         <div class="data-list">
-          <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item.id)"
+          <div v-for="(item, index) in dataList" :key="index" @click="getDetail(item)"
                class="list-item animated fadeIn">
             <h2 class="title">{{ item.title }}</h2>
             <div v-if="item.category">
@@ -14,7 +14,13 @@
               </el-tag>
             </div>
             <h3 class="sub-title">{{ item.subtitle }}</h3>
-            <p class="meta">{{ item.createTime }}</p>
+            <div class="list-bottom">
+              <p class="meta">{{ item.createTime }}</p>
+              <div v-if="item.clickViews" class="item-view">
+                <i class="el-icon-view"></i>
+                <p class="view-num">{{ item.clickViews }}</p>
+              </div>
+            </div>
             <div class="hr"></div>
           </div>
         </div>
@@ -103,8 +109,9 @@ export default {
       this.pageNo = 1
       this.getDataList()
     },
-    getDetail(id) {
-      this.$router.push({name: 'detail', query: {id: id}})
+    getDetail(item) {
+      this.$router.push({name: 'detail', query: {id: item.id}})
+      return item.clickViews += 1
     },
     prePage() {
       this.pageNo -= 1
@@ -173,11 +180,25 @@ export default {
       overflow: hidden;
     }
 
-    .meta {
-      font-family: Lora, 'Times New Roman', serif;
-      font-size: 18px;
-      font-style: italic;
-      margin-bottom: 30px;
+    .list-bottom {
+      display: flex;
+      align-items: center;
+      .meta {
+        font-family: Lora, 'Times New Roman', serif;
+        font-size: 18px;
+        font-style: italic;
+        //margin-bottom: 30px;
+      }
+      .item-view {
+        display: flex;
+        align-items: center;
+        margin-left: 16px;
+        .view-num {
+          color: #666666;
+          font-size: 15px;
+          margin-left: 2px;
+        }
+      }
     }
 
     .hr {

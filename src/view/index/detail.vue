@@ -5,7 +5,13 @@
       <el-col :xl="{span: 16}" :lg="{span: 18}" :md="{span: 20}" :sm="{span: 22}" :xs="{span: 24}">
         <el-card>
           <h1 class="title">{{ blogDetail.title }}</h1>
-          <div class="time">{{ blogDetail.createTime }}</div>
+          <div class="time">
+            <div>{{ blogDetail.createTime }}</div>
+            <div class="item-view">
+              <i class="el-icon-view"></i>
+              <p class="view-num">{{ blogDetail.clickViews + 1 }}</p>
+            </div>
+          </div>
           <div v-html="blogDetail.htmlRender" class="markdown-body" style="min-height: 600px;"></div>
         </el-card>
       </el-col>
@@ -58,6 +64,18 @@ export default {
 }
 
 .time {
+  display: flex;
+  align-items: center;
   margin: 5px 10px 20px;
+}
+.item-view {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  .view-num {
+    color: #666666;
+    font-size: 15px;
+    margin-left: 2px;
+  }
 }
 </style>

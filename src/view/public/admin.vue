@@ -2,14 +2,14 @@
   <div class="u-f-col">
     <head-guide guideHeight="60px" :imgShow="false" :sayingShow="false"></head-guide>
     <el-row :gutter="20" class="data-list">
-      <el-form :model="filterForm" ref="filterForm" label-width="70px" size="medium"
+      <el-form :model="filterForm" ref="filterForm" label-width="40px" size="small"
                @keyup.enter.native="getDataList()">
-        <el-col :span="5">
+        <el-col :span="4">
           <el-form-item label="标题" prop="title">
             <el-input v-model="filterForm.title" placeholder="文章标题" clearable></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="3">
           <el-form-item label="状态" prop="state">
             <el-select v-model="filterForm.state" placeholder="文章状态">
               <el-option
@@ -21,7 +21,19 @@
             </el-select>
           </el-form-item>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="3">
+          <el-form-item label="排序" prop="sort">
+            <el-select v-model="filterForm.sort" placeholder="">
+              <el-option
+                v-for="item in sortOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="4">
           <el-form-item label="时间" prop="createTime">
             <el-date-picker
               v-model="filterForm.createTime"
@@ -59,14 +71,15 @@
             </template>
           </el-table-column>
           <el-table-column prop="subtitle" label="简介" align="center"></el-table-column>
-          <el-table-column prop="status" label="状态" align="center">
+          <el-table-column prop="status" label="状态" align="center" width="140">
             <template slot-scope="scope">
               <el-tag v-if="scope.row.state" type="success">正常</el-tag>
               <el-tag v-else type="danger">停用</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="时间" align="center"></el-table-column>
-          <el-table-column label="操作" align="center" width="300" fixed="right">
+          <el-table-column prop="clickViews" label="浏览" align="center" width="140"></el-table-column>
+          <el-table-column prop="createTime" label="时间" align="center" width="180"></el-table-column>
+          <el-table-column label="操作" align="center" width="200" fixed="right">
             <template slot-scope="scope">
               <el-button @click="toEdit(scope.row.id)" type="text" size="small">编辑</el-button>
               <el-button @click="disFun(scope.row.id, scope.row.state)" type="text" size="small">
@@ -112,6 +125,7 @@ export default {
       filterForm: {
         title: '',
         state: null,
+        sort: 0,
         createTime: ''
       },
       statusOptions: [{
@@ -120,6 +134,16 @@ export default {
       }, {
         value: 0,
         label: '停用'
+      }],
+      sortOptions: [{
+        value: 0,
+        label: '综合'
+      }, {
+        value: 1,
+        label: '时间'
+      }, {
+        value: 2,
+        label: '浏览'
       }],
       dataList: [],
       pageNo: 1,
