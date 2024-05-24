@@ -7,13 +7,13 @@
         </el-col>
         <el-col class="u-f-jsb" :xl="{span: 5, pull: 1}" :lg="{span: 9}" :md="{span: 12}" :sm="{span: 15}"
                 :xs="{span: 18}">
-          <div @click="navTo('index')" class="guide-item u-f-auto">Index</div>
-          <div @click="navTo('about')" class="guide-item u-f-auto">About</div>
-          <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">Admin</div>
+          <div @click="navTo('index')" class="guide-item u-f-auto">沁园春</div>
+          <div @click="navTo('about')" class="guide-item u-f-auto">青玉案</div>
+          <div v-if="hasLogin" @click="navTo('admin')" class="guide-item u-f-auto">临江仙</div>
           <div v-if="hasLogin" class="guide-item u-f-auto">
             <el-avatar src="../../../static/imgs/head.jpg"></el-avatar>
           </div>
-          <div v-if="!hasLogin" @click="navTo('login')" class="guide-item u-f-auto">Login</div>
+          <div v-if="!hasLogin" @click="navTo('login')" class="guide-item u-f-auto">如梦令</div>
         </el-col>
       </el-row>
       <el-image v-if="imgShow" class="bg-img" fit="cover" src="http://www.jianking.vip/resource/RainDate/yeying.png" lazy></el-image>
@@ -91,7 +91,8 @@ export default {
     .guide-item {
       width: 120px;
       height: 60px;
-      font-size: 22px;
+      font-size: 26px;
+      font-family: cursive;
       color: #000000;
 
       &:hover {
