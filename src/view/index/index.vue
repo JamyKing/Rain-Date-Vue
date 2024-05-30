@@ -1,7 +1,7 @@
 <template>
   <div class="u-f-col">
-    <head-guide></head-guide>
-    <el-row :gutter="20" type="flex" justify="center" style="margin: 0;">
+    <head-guide :videoShow="true"></head-guide>
+    <el-row :gutter="20" type="flex" justify="center" style="margin: 20px 0 0 0;">
       <el-col :xl="{span: 10}" :lg="{span: 12}" :md="{span: 14}" :sm="{span: 16}" :xs="{span: 17}"
               style="background: white; padding: 10px; box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);">
         <div class="data-list">

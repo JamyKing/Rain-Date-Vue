@@ -22,6 +22,9 @@ export default {
   methods: {
     async getCategory() {
       try {
+        if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+          this.$store.commit('setMobile', true)
+        }
         const cateRes = await this.$request('/api/category/list', 'GET')
         if (cateRes.code === 0) {
           this.$store.commit('setCategory', cateRes.data)

@@ -12,7 +12,8 @@ const store = new Vuex.Store({
       extract: '',
       feature: ''
     },
-    category: []
+    category: [],
+    isMobile: false
   },
   mutations: {
     login(state, provider) {
@@ -28,6 +29,9 @@ const store = new Vuex.Store({
     },
     setSpring(state, provider) {
       state.spring = provider
+    },
+    setMobile(state, provider) {
+      state.isMobile = provider
     }
   },
   getters: {

@@ -1,7 +1,7 @@
 <template>
   <div class="u-f-col">
     <head-guide></head-guide>
-    <el-row class="u-f-cer">
+    <el-row class="u-f-cer" style="margin-top: 20px">
       <el-col :xl="{span: 12}" :lg="{span: 15}" :md="{span: 17}" :sm="{span: 19}" :xs="{span: 22}" class="line-time">
         <el-timeline>
           <el-timeline-item

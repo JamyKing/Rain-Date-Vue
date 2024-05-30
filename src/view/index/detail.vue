@@ -1,7 +1,7 @@
 <template>
   <div class="u-f-col">
     <head-guide guideHeight="60px" :imgShow="false"></head-guide>
-    <el-row type="flex" justify="center">
+    <el-row type="flex" justify="center" style="margin-top: 20px">
       <el-col :xl="{span: 16}" :lg="{span: 18}" :md="{span: 20}" :sm="{span: 22}" :xs="{span: 24}">
         <el-card>
           <h1 class="title">{{ blogDetail.title }}</h1>
